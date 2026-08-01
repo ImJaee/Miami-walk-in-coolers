@@ -573,7 +573,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 .product-image-wrap {
   position: relative;
-  min-height: 250px;  /* Flexible for any image size */
+  aspect-ratio: 4 / 3;      /* definite height => cover-crop works */
   background: rgba(0, 74, 173, 0.2);
   overflow: hidden;
 }
@@ -581,6 +581,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 45%;
   transition: transform 0.4s ease;
 }
 .product-card-large:hover .product-image {
