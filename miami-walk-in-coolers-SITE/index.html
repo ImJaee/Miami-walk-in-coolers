@@ -111,12 +111,22 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(0, 74, 173, 0.94);
+  background: linear-gradient(180deg, rgba(0, 58, 138, 0.90) 0%, rgba(0, 74, 173, 0.86) 100%);
   backdrop-filter: blur(16px) saturate(140%);
   -webkit-backdrop-filter: blur(16px) saturate(140%);
-  border-bottom: 1px solid rgba(50, 204, 254, 0.2);
+  border-bottom: 1px solid rgba(92, 225, 230, 0.30);
+  box-shadow: 0 1px 24px rgba(0, 26, 46, 0.28);
+
   transition: all 0.3s;
 }
+
+/* Nav: cool logo-blue, deepens on scroll (no black) */
+.nav.scrolled {
+  background: linear-gradient(180deg, rgba(0, 40, 96, 0.96) 0%, rgba(0, 62, 148, 0.94) 100%);
+  border-bottom-color: rgba(92, 225, 230, 0.42);
+  box-shadow: 0 2px 30px rgba(0, 18, 40, 0.42);
+}
+
 .nav-logo {
   height: 70px;
   display: block;
@@ -2096,59 +2106,6 @@ section { position: relative; }
   </div>
 </section>
 
-<!-- ===== ABOUT US / FAMILY LEGACY ===== -->
-<section class="section about-family">
-  <div class="section-inner">
-    <div class="about-grid">
-      
-      <!-- Left: Family Photo -->
-      <div class="about-photo reveal">
-        <img src="images/three-generations-of-miami-walk-in-coole.webp" alt="Three generations of Miami Walk-In Coolers family" class="family-image" / loading="lazy" decoding="async">
-        <div class="photo-caption">
-          <strong>Three Generations Strong</strong>
-          <p>From left to right: Our team representing over 50 years of refrigeration expertise, handed down through the family.</p>
-        </div>
-      </div>
-
-      <!-- Right: Story -->
-      <div class="about-story reveal">
-        <div class="eyebrow">Our Story</div>
-        <h2 class="section-title">Built by family. <em>Trusted by thousands.</em></h2>
-        
-        <p class="about-text">
-          Miami Walk-In Coolers isn't just a business — it's a family legacy that spans three generations. What started as a small refrigeration shop has grown into a trusted name across the country, but our values haven't changed.
-        </p>
-        
-        <p class="about-text">
-          Every cooler we build carries decades of hands-on expertise. From grandfather to father to sons, we've passed down not just technical knowledge, but a commitment to doing things right — American materials, custom craftsmanship, and real relationships with the people we serve.
-        </p>
-        
-        <p class="about-text">
-          When you work with us, you're not dealing with a faceless corporation. You're working with a family that stands behind every unit we ship, from the first conversation to the final installation and beyond.
-        </p>
-
-        <div class="about-stats-row">
-          <div class="about-stat-item">
-            <div class="about-stat-num">3</div>
-            <div class="about-stat-label">Generations</div>
-          </div>
-          <div class="about-stat-item">
-            <div class="about-stat-num">50+</div>
-            <div class="about-stat-label">Years Experience</div>
-          </div>
-          <div class="about-stat-item">
-            <div class="about-stat-num">100%</div>
-            <div class="about-stat-label">Family Owned</div>
-          </div>
-        </div>
-
-        <a href="/get-a-quote" class="cta">Work with us <span class="cta-arrow">→</span></a>
-      </div>
-
-    </div>
-  </div>
-</section>
-
 <!-- ===== APPLICATIONS (dark) ===== -->
 <section class="section applications">
   <div class="section-inner">
@@ -2359,11 +2316,7 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 // Nav background opacity on scroll
 const nav = document.querySelector('.nav');
 window.addEventListener('scroll', () => {
-  if (window.scrollY > 50) {
-    nav.style.background = 'rgba(0, 0, 0, 0.98)';
-  } else {
-    nav.style.background = 'rgba(0, 0, 0, 0.95)';
-  }
+  nav.classList.toggle('scrolled', window.scrollY > 50);
 });
 
 // Mobile menu toggle

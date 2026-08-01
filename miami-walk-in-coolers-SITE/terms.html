@@ -84,12 +84,22 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(0, 74, 173, 0.94);
+  background: linear-gradient(180deg, rgba(0, 58, 138, 0.90) 0%, rgba(0, 74, 173, 0.86) 100%);
   backdrop-filter: blur(16px) saturate(140%);
   -webkit-backdrop-filter: blur(16px) saturate(140%);
-  border-bottom: 1px solid rgba(50, 204, 254, 0.2);
+  border-bottom: 1px solid rgba(92, 225, 230, 0.30);
+  box-shadow: 0 1px 24px rgba(0, 26, 46, 0.28);
+
   transition: all 0.3s;
 }
+
+/* Nav: cool logo-blue, deepens on scroll (no black) */
+.nav.scrolled {
+  background: linear-gradient(180deg, rgba(0, 40, 96, 0.96) 0%, rgba(0, 62, 148, 0.94) 100%);
+  border-bottom-color: rgba(92, 225, 230, 0.42);
+  box-shadow: 0 2px 30px rgba(0, 18, 40, 0.42);
+}
+
 .nav-logo {
   height: 46px;
   display: block;
