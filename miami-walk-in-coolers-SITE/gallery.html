@@ -1075,6 +1075,14 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .nav-links > a,.nav-dropdown > a{font-size:0.8rem !important;}
 .nav-links .cta,.nav .cta{font-size:0.8rem !important;padding:0.7rem 1.15rem !important;}
 .nav-dropdown-menu a{font-size:0.85rem !important;}
+
+/* --- long strings (emails/URLs) must wrap, never overflow their card --- */
+.app-card,.footer-contact-item,.category-card,.product-card{min-width:0;}
+.app-desc,.app-desc a,
+.footer-contact-item,.footer-contact-item a,
+.category-desc,.product-desc{overflow-wrap:anywhere;word-break:break-word;hyphens:auto;}
+.app-desc a[href^="mailto:"],
+.footer-contact-item a[href^="mailto:"]{font-size:0.95em;display:inline-block;max-width:100%;}
 </style>
 </head>
 <body>
