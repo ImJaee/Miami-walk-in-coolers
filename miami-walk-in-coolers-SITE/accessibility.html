@@ -974,14 +974,14 @@ button { font-family: inherit; /* cursor: default; */ border: none; background: 
   box-shadow: 0 4px 14px var(--green-glow);
 }
 
-.reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+/* Content is visible by default; the scroll script only adds a gentle lift. */
+.reveal.in { animation: reveal-lift 0.7s ease both; }
+@keyframes reveal-lift {
+  from { transform: translateY(18px); }
+  to   { transform: none; }
 }
-.reveal.in {
-  opacity: 1;
-  transform: translateY(0);
+@media (prefers-reduced-motion: reduce) {
+  .reveal.in { animation: none; }
 }
 
 /* ============ EDITABLE PHOTO STYLE — added for easy editing ============ */
@@ -1131,7 +1131,7 @@ button { font-family: inherit; /* cursor: default; */ border: none; background: 
   <div class="footer-inner">
     <div class="footer-grid">
       <div class="footer-brand">
-        <img src="images/miami-walk-in-coolers.webp" alt="Miami Walk-In Coolers" / loading="lazy" decoding="async">
+        <img src="images/miami-walk-in-coolers.webp" alt="Miami Walk-In Coolers" loading="lazy" decoding="async" />
         <p class="footer-tagline">Custom commercial refrigeration, built in the USA — shipped nationwide.</p>
         <div class="footer-nationwide">Ships Nationwide</div>
       </div>

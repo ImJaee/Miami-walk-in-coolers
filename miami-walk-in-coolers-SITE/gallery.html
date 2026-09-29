@@ -1050,14 +1050,14 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 /* Reveal on scroll */
-.reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+/* Content is visible by default; the scroll script only adds a gentle lift. */
+.reveal.in { animation: reveal-lift 0.7s ease both; }
+@keyframes reveal-lift {
+  from { transform: translateY(18px); }
+  to   { transform: none; }
 }
-.reveal.in {
-  opacity: 1;
-  transform: translateY(0);
+@media (prefers-reduced-motion: reduce) {
+  .reveal.in { animation: none; }
 }
 
 /* ============ EDITABLE PHOTO STYLE — added for easy editing ============ */
@@ -1172,7 +1172,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     <h1 class="page-title">Project Gallery</h1>
     
     <p class="page-subtitle">
-      See our walk-in coolers and freezers in action. Real installations for real businesses across America. engineered to your exact specifications. From single-temp coolers to complex combo units — we build it right, ship it nationwide, and stand behind every unit.
+      See our walk-in coolers and freezers in action. Real installations for real businesses across America, engineered to your exact specifications. From single-temp coolers to complex combo units — we build it right, ship it nationwide, and stand behind every unit.
     </p>
   </div>
 </section>
@@ -1184,82 +1184,82 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
       <div style="background: rgba(0, 74, 173, 0.15); border: 1px solid rgba(92, 225, 230, 0.3); border-radius: 8px; overflow: hidden;">
         <div style="aspect-ratio: 1/1; overflow: hidden;">
-          <img src="images/mwc-walkin-combo.jpg" alt="Miami Walk-In Coolers installation" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <img src="images/mwc-walkin-combo.jpg" alt="Walk-in cooler and freezer combo unit with two insulated entry doors" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;">
         </div>
       </div>
       <div style="background: rgba(0, 74, 173, 0.15); border: 1px solid rgba(92, 225, 230, 0.3); border-radius: 8px; overflow: hidden;">
         <div style="aspect-ratio: 1/1; overflow: hidden;">
-          <img src="images/mwc-walkin-cooler.jpg" alt="Miami Walk-In Coolers installation" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <img src="images/mwc-walkin-cooler.jpg" alt="Long walk-in cooler built inside a commercial space" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;">
         </div>
       </div>
       <div style="background: rgba(0, 74, 173, 0.15); border: 1px solid rgba(92, 225, 230, 0.3); border-radius: 8px; overflow: hidden;">
         <div style="aspect-ratio: 1/1; overflow: hidden;">
-          <img src="images/mwc-walkin-glass-door.jpg" alt="Miami Walk-In Coolers installation" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <img src="images/mwc-walkin-glass-door.jpg" alt="Walk-in cooler with glass merchandising doors in a convenience store" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;">
         </div>
       </div>
       <div style="background: rgba(0, 74, 173, 0.15); border: 1px solid rgba(92, 225, 230, 0.3); border-radius: 8px; overflow: hidden;">
         <div style="aspect-ratio: 1/1; overflow: hidden;">
-          <img src="images/mwc-walkin-freezer.jpg" alt="Miami Walk-In Coolers installation" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <img src="images/mwc-walkin-freezer.jpg" alt="Walk-in freezer with its insulated door open" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;">
         </div>
       </div>
       <div style="background: rgba(0, 74, 173, 0.15); border: 1px solid rgba(92, 225, 230, 0.3); border-radius: 8px; overflow: hidden;">
         <div style="aspect-ratio: 1/1; overflow: hidden;">
-          <img src="images/mwc-walkin-beer-cave.jpg" alt="Miami Walk-In Coolers installation" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <img src="images/mwc-walkin-beer-cave.jpg" alt="Open retail floor with a wall of glass cooler doors for a beer cave" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;">
         </div>
       </div>
       <div style="background: rgba(0, 74, 173, 0.15); border: 1px solid rgba(92, 225, 230, 0.3); border-radius: 8px; overflow: hidden;">
         <div style="aspect-ratio: 1/1; overflow: hidden;">
-          <img src="images/mwc-walkin-warehouse.jpg" alt="Miami Walk-In Coolers installation" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <img src="images/mwc-walkin-warehouse.jpg" alt="Inside a large warehouse cold room with ceiling-mounted refrigeration" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;">
         </div>
       </div>
       <div style="background: rgba(0, 74, 173, 0.15); border: 1px solid rgba(92, 225, 230, 0.3); border-radius: 8px; overflow: hidden;">
         <div style="aspect-ratio: 1/1; overflow: hidden;">
-          <img src="images/mwc-walkin-viewing-window.jpg" alt="Miami Walk-In Coolers installation" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <img src="images/mwc-walkin-viewing-window.jpg" alt="Walk-in cooler with a door viewing window and temperature display" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;">
         </div>
       </div>
       <div style="background: rgba(0, 74, 173, 0.15); border: 1px solid rgba(92, 225, 230, 0.3); border-radius: 8px; overflow: hidden;">
         <div style="aspect-ratio: 1/1; overflow: hidden;">
-          <img src="images/mwc-walkin-field-cut.jpg" alt="Miami Walk-In Coolers installation" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <img src="images/mwc-walkin-field-cut.jpg" alt="Walk-in panels assembled on site with the front wall cut to fit" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;">
         </div>
       </div>
       <div style="background: rgba(0, 74, 173, 0.15); border: 1px solid rgba(92, 225, 230, 0.3); border-radius: 8px; overflow: hidden;">
         <div style="aspect-ratio: 1/1; overflow: hidden;">
-          <img src="images/mwc-walkin-tongue-groove.jpg" alt="Miami Walk-In Coolers installation" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <img src="images/mwc-walkin-tongue-groove.jpg" alt="Interior of a walk-in cooler with tongue-and-groove panels and wire shelving" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;">
         </div>
       </div>
       <div style="background: rgba(0, 74, 173, 0.15); border: 1px solid rgba(92, 225, 230, 0.3); border-radius: 8px; overflow: hidden;">
         <div style="aspect-ratio: 1/1; overflow: hidden;">
-          <img src="images/mwc-walkin-sliding-door.jpg" alt="Miami Walk-In Coolers installation" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <img src="images/mwc-walkin-sliding-door.jpg" alt="Large outdoor walk-in structure beside a commercial building" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;">
         </div>
       </div>
       <div style="background: rgba(0, 74, 173, 0.15); border: 1px solid rgba(92, 225, 230, 0.3); border-radius: 8px; overflow: hidden;">
         <div style="aspect-ratio: 1/1; overflow: hidden;">
-          <img src="images/mwc-walkin-roof-membrane.jpg" alt="Miami Walk-In Coolers installation" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <img src="images/mwc-walkin-roof-membrane.jpg" alt="Outdoor walk-in cooler with a weatherproof roof membrane" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;">
         </div>
       </div>
       <div style="background: rgba(0, 74, 173, 0.15); border: 1px solid rgba(92, 225, 230, 0.3); border-radius: 8px; overflow: hidden;">
         <div style="aspect-ratio: 1/1; overflow: hidden;">
-          <img src="images/mwc-door-entry-frame.jpg" alt="Miami Walk-In Coolers installation" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <img src="images/mwc-door-entry-frame.jpg" alt="Walk-in cooler entry door and frame with a diamond-plate kick plate" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;">
         </div>
       </div>
       <div style="background: rgba(0, 74, 173, 0.15); border: 1px solid rgba(92, 225, 230, 0.3); border-radius: 8px; overflow: hidden;">
         <div style="aspect-ratio: 1/1; overflow: hidden;">
-          <img src="images/mwc-door-man-doors.jpg" alt="Miami Walk-In Coolers installation" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <img src="images/mwc-door-man-doors.jpg" alt="Replacement walk-in man door with heavy-duty hinges" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;">
         </div>
       </div>
       <div style="background: rgba(0, 74, 173, 0.15); border: 1px solid rgba(92, 225, 230, 0.3); border-radius: 8px; overflow: hidden;">
         <div style="aspect-ratio: 1/1; overflow: hidden;">
-          <img src="images/mwc-door-viewing-window.jpg" alt="Miami Walk-In Coolers installation" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <img src="images/mwc-door-viewing-window.jpg" alt="Walk-in cooler door with a heated viewing window" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;">
         </div>
       </div>
       <div style="background: rgba(0, 74, 173, 0.15); border: 1px solid rgba(92, 225, 230, 0.3); border-radius: 8px; overflow: hidden;">
         <div style="aspect-ratio: 1/1; overflow: hidden;">
-          <img src="images/mwc-refrig-condensing-unit.jpg" alt="Miami Walk-In Coolers installation" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <img src="images/mwc-refrig-condensing-unit.jpg" alt="Refrigeration condensing unit in its shipping box" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;">
         </div>
       </div>
       <div style="background: rgba(0, 74, 173, 0.15); border: 1px solid rgba(92, 225, 230, 0.3); border-radius: 8px; overflow: hidden;">
         <div style="aspect-ratio: 1/1; overflow: hidden;">
-          <img src="images/mwc-restaurant-slicer.jpg" alt="Miami Walk-In Coolers installation" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <img src="images/mwc-restaurant-slicer.jpg" alt="Commercial meat slicer" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;">
         </div>
       </div>
     </div>
@@ -1274,7 +1274,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
       <article class="product-card-large reveal">
         <div class="product-image-wrap">
           <!-- 🖼️ REPLACE WITH WALK-IN COOLER IMAGE -->
-          <img src="images/walk-in-cooler.svg" alt="Walk-In Cooler" class="product-image" / loading="lazy" decoding="async">
+          <img src="images/walk-in-cooler.svg" alt="Walk-In Cooler" class="product-image" loading="lazy" decoding="async" />
           <div class="product-badge">Most Popular</div>
         </div>
         <div class="product-content">
@@ -1298,7 +1298,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
       <article class="product-card-large reveal">
         <div class="product-image-wrap">
           <!-- 🖼️ REPLACE WITH WALK-IN FREEZER IMAGE -->
-          <img src="images/walk-in-freezer.svg" alt="Walk-In Freezer" class="product-image" / loading="lazy" decoding="async">
+          <img src="images/walk-in-freezer.svg" alt="Walk-In Freezer" class="product-image" loading="lazy" decoding="async" />
         </div>
         <div class="product-content">
           <h2 class="product-title">Walk-In Freezers</h2>
@@ -1321,7 +1321,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
       <article class="product-card-large reveal">
         <div class="product-image-wrap">
           <!-- 🖼️ REPLACE WITH COLD ROOM IMAGE -->
-          <img src="images/cold-room.svg" alt="Cold Room" class="product-image" / loading="lazy" decoding="async">
+          <img src="images/cold-room.svg" alt="Cold Room" class="product-image" loading="lazy" decoding="async" />
         </div>
         <div class="product-content">
           <h2 class="product-title">Cold Rooms</h2>
@@ -1344,7 +1344,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
       <article class="product-card-large reveal">
         <div class="product-image-wrap">
           <!-- 🖼️ REPLACE WITH COMBO UNIT IMAGE -->
-          <img src="images/combo-unit.svg" alt="Combo Unit" class="product-image" / loading="lazy" decoding="async">
+          <img src="images/combo-unit.svg" alt="Combo Unit" class="product-image" loading="lazy" decoding="async" />
           <div class="product-badge">Versatile</div>
         </div>
         <div class="product-content">
@@ -1388,7 +1388,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   <div class="footer-inner">
     <div class="footer-grid">
       <div class="footer-brand">
-        <img src="images/miami-walk-in-coolers.webp" alt="Miami Walk-In Coolers" / loading="lazy" decoding="async">
+        <img src="images/miami-walk-in-coolers.webp" alt="Miami Walk-In Coolers" loading="lazy" decoding="async" />
         <p class="footer-tagline">Custom commercial refrigeration, built in the USA — shipped nationwide.</p>
         <div class="footer-nationwide">Ships Nationwide</div>
       </div>
