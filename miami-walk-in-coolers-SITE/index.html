@@ -1864,14 +1864,14 @@ section { position: relative; }
 }
 
 /* Reveal on scroll */
-.reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+/* Content is visible by default; the scroll script only adds a gentle lift. */
+.reveal.in { animation: reveal-lift 0.7s ease both; }
+@keyframes reveal-lift {
+  from { transform: translateY(18px); }
+  to   { transform: none; }
 }
-.reveal.in {
-  opacity: 1;
-  transform: translateY(0);
+@media (prefers-reduced-motion: reduce) {
+  .reveal.in { animation: none; }
 }
 
 /* ============ EDITABLE PHOTO STYLE — added for easy editing ============ */
@@ -2012,7 +2012,7 @@ section { position: relative; }
       <!-- 🖼️ REPLACE WITH YOUR WALK-IN COOLER IMAGE -->
       <!-- Recommended: Professional photo of one of your coolers -->
       <!-- Size: 600x800px (portrait orientation works best) -->
-      <img src="images/mwc-walkin-viewing-window.jpg" alt="Miami Walk-In Cooler custom unit" class="hero-cooler-image" / loading="lazy" decoding="async">
+      <img src="images/mwc-walkin-viewing-window.jpg" alt="Miami Walk-In Cooler custom unit" class="hero-cooler-image" fetchpriority="high" decoding="async" />
     </aside>
   </div>
 
@@ -2059,7 +2059,7 @@ section { position: relative; }
     <div class="reveal">
       <div class="eyebrow">01 — What we build</div>
       <h2 class="section-title">We are dedicated manufacturers and custom builders of <em>quality walk-in coolers, freezers, doors and frames.</em></h2>
-      <p class="section-lede">What sets us apart is our commitment to using materials entirely made in the U.S.A, ensuring top-notch quality and reliability. We also do custom work and can tailor to any specific measurments your business may require for a walk-in cooler/freezer.</p>
+      <p class="section-lede">What sets us apart is our commitment to using materials entirely made in the U.S.A., ensuring top-notch quality and reliability. We also do custom work and can tailor to any specific measurements your business may require for a walk-in cooler/freezer.</p>
     </div>
 
     <div class="products-grid">
@@ -2070,7 +2070,7 @@ section { position: relative; }
         <!-- 🖼️ ADD YOUR IMAGE HERE -->
         <!-- Replace "product-1.jpg" with your actual filename -->
         <!-- Recommended size: 400x300px or similar ratio -->
-        <img src="images/mwc-walkin-combo.jpg" alt="Walk-In Coolers & Freezers" class="product-image" / loading="lazy" decoding="async">
+        <img src="images/mwc-walkin-combo.jpg" alt="Walk-In Coolers & Freezers" class="product-image" loading="lazy" decoding="async" />
         
         <h3 class="product-name">Walk-In Coolers<br/>& Freezers</h3>
         <p class="product-desc">Tailored designs to fit your specific needs.</p>
@@ -2082,7 +2082,7 @@ section { position: relative; }
         <div class="product-num">/02</div>
         
         <!-- 🖼️ ADD YOUR IMAGE HERE -->
-        <img src="images/mwc-refrig-condensing-unit.jpg" alt="Refrigeration Equipment" class="product-image" / loading="lazy" decoding="async">
+        <img src="images/mwc-refrig-condensing-unit.jpg" alt="Refrigeration Equipment" class="product-image" loading="lazy" decoding="async" />
         
         <h3 class="product-name">Refrigeration<br/>Equipment</h3>
         <p class="product-desc">From high-quality systems to complete setup essentials.</p>
@@ -2094,7 +2094,7 @@ section { position: relative; }
         <div class="product-num">/03</div>
         
         <!-- 🖼️ ADD YOUR IMAGE HERE -->
-        <img src="images/mwc-restaurant-slicer.jpg" alt="Restaurant Equipment" class="product-image" / loading="lazy" decoding="async">
+        <img src="images/mwc-restaurant-slicer.jpg" alt="Restaurant Equipment" class="product-image" loading="lazy" decoding="async" />
         
         <h3 class="product-name">Restaurant<br/>Equipment</h3>
         <p class="product-desc">Catering to a wide range of industries, including restaurants, grocery stores, and more.</p>
@@ -2106,7 +2106,7 @@ section { position: relative; }
         <div class="product-num">/04</div>
         
         <!-- 🖼️ ADD YOUR IMAGE HERE -->
-        <img src="images/mwc-doors-group.jpg" alt="Custom Doors & Hardware" class="product-image" / loading="lazy" decoding="async">
+        <img src="images/mwc-doors-group.jpg" alt="Custom Doors & Hardware" class="product-image" loading="lazy" decoding="async" />
         
         <h3 class="product-name">Custom<br/>Doors & Hardware</h3>
         <p class="product-desc">We manufacture any custom door to fit any net opening you may need, plus any Walk-In hardware you may need.</p>
@@ -2251,7 +2251,7 @@ section { position: relative; }
   <div class="footer-inner">
     <div class="footer-grid">
       <div class="footer-brand">
-        <img src="images/miami-walk-in-coolers.webp" alt="Miami Walk-In Coolers" / loading="lazy" decoding="async">
+        <img src="images/miami-walk-in-coolers.webp" alt="Miami Walk-In Coolers" loading="lazy" decoding="async" />
         <p class="footer-tagline">Custom commercial refrigeration, built in the USA — shipped nationwide.</p>
         <div class="footer-nationwide">Ships Nationwide</div>
       </div>

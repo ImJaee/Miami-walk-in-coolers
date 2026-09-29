@@ -974,14 +974,14 @@ button { font-family: inherit; /* cursor: default; */ border: none; background: 
   box-shadow: 0 4px 14px var(--green-glow);
 }
 
-.reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+/* Content is visible by default; the scroll script only adds a gentle lift. */
+.reveal.in { animation: reveal-lift 0.7s ease both; }
+@keyframes reveal-lift {
+  from { transform: translateY(18px); }
+  to   { transform: none; }
 }
-.reveal.in {
-  opacity: 1;
-  transform: translateY(0);
+@media (prefers-reduced-motion: reduce) {
+  .reveal.in { animation: none; }
 }
 
 /* ============ EDITABLE PHOTO STYLE — added for easy editing ============ */
@@ -1111,7 +1111,7 @@ button { font-family: inherit; /* cursor: default; */ border: none; background: 
       <div class="category-card reveal">
         <div class="category-image">
           <!-- 🖼️ REPLACE WITH COMPRESSOR IMAGE -->
-          <img src="images/mwc-refrig-condensing-unit.jpg" alt="Condensing Unit" / loading="lazy" decoding="async">
+          <img src="images/mwc-refrig-condensing-unit.jpg" alt="Condensing Unit" loading="lazy" decoding="async" />
         </div>
         <div class="category-header">
           <h2 class="category-title">Compressors</h2>
@@ -1160,7 +1160,7 @@ button { font-family: inherit; /* cursor: default; */ border: none; background: 
       <div class="category-card reveal">
         <div class="category-image">
           <!-- 🖼️ REPLACE WITH CONDENSER IMAGE -->
-          <img src="images/condenser.svg" alt="Condenser" / loading="lazy" decoding="async">
+          <img src="images/condenser.svg" alt="Condenser" loading="lazy" decoding="async" />
         </div>
         <div class="category-header">
           <h2 class="category-title">Condensers</h2>
@@ -1200,7 +1200,7 @@ button { font-family: inherit; /* cursor: default; */ border: none; background: 
       <div class="category-card reveal">
         <div class="category-image">
           <!-- 🖼️ REPLACE WITH EVAPORATOR IMAGE -->
-          <img src="images/mwc-refrig-evaporator-coil.jpg" alt="Low Profile Evaporator Coil" / loading="lazy" decoding="async">
+          <img src="images/mwc-refrig-evaporator-coil.jpg" alt="Low Profile Evaporator Coil" loading="lazy" decoding="async" />
         </div>
         <div class="category-header">
           <h2 class="category-title">Evaporators</h2>
@@ -1249,7 +1249,7 @@ button { font-family: inherit; /* cursor: default; */ border: none; background: 
       <div class="category-card reveal">
         <div class="category-image">
           <!-- 🖼️ REPLACE WITH CONTROLS IMAGE -->
-          <img src="images/controls.svg" alt="Controls" / loading="lazy" decoding="async">
+          <img src="images/controls.svg" alt="Controls" loading="lazy" decoding="async" />
         </div>
         <div class="category-header">
           <h2 class="category-title">Controls & Accessories</h2>
@@ -1316,7 +1316,7 @@ button { font-family: inherit; /* cursor: default; */ border: none; background: 
   <div class="footer-inner">
     <div class="footer-grid">
       <div class="footer-brand">
-        <img src="images/miami-walk-in-coolers.webp" alt="Miami Walk-In Coolers" / loading="lazy" decoding="async">
+        <img src="images/miami-walk-in-coolers.webp" alt="Miami Walk-In Coolers" loading="lazy" decoding="async" />
         <p class="footer-tagline">Custom commercial refrigeration, built in the USA — shipped nationwide.</p>
         <div class="footer-nationwide">Ships Nationwide</div>
       </div>
