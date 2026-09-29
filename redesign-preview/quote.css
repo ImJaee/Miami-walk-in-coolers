@@ -1,0 +1,120 @@
+/* Quote page: guided 4-step form beside a live draft spec sheet. */
+
+.quote-head { padding-block: clamp(2.25rem, 5vw, 4rem) var(--s4); display: grid; gap: var(--s3); }
+.quote-head h1 { font-size: clamp(3rem, 8vw, 6rem); }
+.quote-head h1 .accent { color: var(--blue); }
+.quote-head-row { display: grid; gap: var(--s3); align-items: end; }
+@media (min-width: 900px) { .quote-head-row { grid-template-columns: 1fr auto; } }
+
+.quote-layout { display: grid; gap: var(--s4); padding-bottom: var(--s7); align-items: start; }
+@media (min-width: 1000px) { .quote-layout { grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: var(--s5); } }
+
+.quote-form { background: var(--plate); border: 1px solid var(--line); box-shadow: var(--lift); padding: clamp(1.25rem, 3.5vw, 2.5rem); display: grid; gap: var(--s4); min-width: 0; }
+
+/* Progress: four panels that fill as you go */
+.progress { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.4rem; }
+.progress button {
+  width: 100%; display: grid; gap: 0.5rem; text-align: left;
+  background: none; border: 0; padding: 0; cursor: pointer; color: var(--steel);
+  font: 600 0.7rem/1.2 var(--mono); letter-spacing: 0.1em; text-transform: uppercase;
+}
+.progress button::before { content: ""; height: 6px; background: var(--galv-2); border-radius: 1px; transition: background-color 0.3s var(--ease); }
+.progress button[disabled] { cursor: default; }
+.progress .done button { color: var(--ink); }
+.progress .done button::before { background: var(--blue); }
+.progress [aria-current="step"] button { color: var(--ink); }
+.progress [aria-current="step"] button::before { background: var(--cta); }
+@media (max-width: 520px) { .progress .p-label { display: none; } }
+
+.step { border: 0; margin: 0; padding: 0; display: grid; gap: var(--s3); min-width: 0; }
+.step legend { padding: 0; margin-bottom: var(--s1); display: grid; gap: 0.5rem; }
+.step legend .count { font: 500 0.72rem/1 var(--mono); letter-spacing: 0.14em; text-transform: uppercase; color: var(--frost-ink); }
+.step legend .display { font-size: clamp(2rem, 4vw, 2.75rem); }
+.step legend:focus { outline: none; }
+.step-intro { color: var(--steel); }
+@media (prefers-reduced-motion: no-preference) {
+  .step:not([hidden]) { animation: step-in 0.35s var(--ease); }
+  @keyframes step-in { from { transform: translateX(14px); opacity: 0.4; } to { transform: none; opacity: 1; } }
+}
+
+.step-walkin, .step-parts { display: grid; gap: var(--s3); }
+
+/* Step 1: type tiles */
+.type-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; }
+@media (min-width: 700px) { .type-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.type { position: relative; }
+.type input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; z-index: 1; }
+.type-card {
+  display: grid; grid-template-rows: auto 1fr; height: 100%;
+  border: 1.5px solid var(--line); border-radius: var(--radius); background: var(--plate); overflow: hidden;
+  transition: border-color 0.15s, box-shadow 0.2s var(--ease), transform 0.2s var(--ease);
+}
+.type-card img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; background: var(--galv-2); }
+.type-card .t-body { padding: 0.75rem 0.85rem 0.9rem; display: grid; gap: 0.35rem; align-content: start; }
+.type-card strong { font: 800 1.35rem/1 var(--display); text-transform: uppercase; }
+.type-card span { font: 500 0.72rem/1.3 var(--mono); letter-spacing: 0.06em; color: var(--steel); text-transform: uppercase; }
+.type input:hover + .type-card { border-color: var(--steel); }
+.type input:checked + .type-card { border-color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--ink); }
+.type input:checked + .type-card::after {
+  content: "Selected"; position: absolute; top: 0.6rem; right: 0.6rem;
+  font: 600 0.65rem/1 var(--mono); letter-spacing: 0.1em; text-transform: uppercase;
+  background: var(--ink); color: var(--frost); padding: 0.35rem 0.5rem;
+}
+.type input:focus-visible + .type-card { outline: 3px solid var(--cta); outline-offset: 2px; }
+
+/* Step 2: dimensions */
+.dims { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem; }
+.dim-input { position: relative; }
+.dim-input .input { padding-right: 2.4rem; font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.dim-input .unit { position: absolute; right: 0.85rem; top: 50%; transform: translateY(-50%); font: 600 0.8rem/1 var(--mono); color: var(--steel); pointer-events: none; }
+.check { display: flex; gap: 0.7rem; align-items: flex-start; cursor: pointer; font-weight: 500; }
+.check input { width: 1.25rem; height: 1.25rem; margin: 0.15rem 0 0; accent-color: var(--ink); flex: none; }
+.group { border: 0; margin: 0; padding: 0; display: grid; gap: 0.6rem; min-width: 0; }
+.group legend { padding: 0; margin-bottom: 0.6rem; }
+.chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.chips label { position: relative; }
+.chips input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.chips span { display: inline-flex; align-items: center; min-height: 2.75rem; padding: 0.4rem 0.95rem; border: 1.5px solid var(--line); border-radius: 999px; background: var(--plate); font-weight: 600; font-size: 0.93rem; transition: all 0.15s; }
+.chips input:hover + span { border-color: var(--steel); }
+.chips input:checked + span { background: var(--ink); color: #fff; border-color: var(--ink); }
+.chips input:checked + span::before { content: "✓"; margin-right: 0.45rem; color: var(--frost); }
+.chips input:focus-visible + span { outline: 3px solid var(--cta); outline-offset: 2px; }
+
+.grid-2 { display: grid; gap: var(--s3); }
+@media (min-width: 640px) { .grid-2 { grid-template-columns: 1fr 1fr; } }
+
+/* Form footer */
+.form-nav { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: space-between; align-items: center; border-top: 1px solid var(--line); padding-top: var(--s3); }
+.form-nav .btn-cta { margin-left: auto; min-width: 12rem; }
+.form-alt { font-size: 0.9rem; color: var(--steel); }
+.form-alt a { font-family: var(--mono); font-weight: 600; }
+.form-error { margin: 0; padding: 1rem; border: 1.5px solid var(--error); background: #fdecea; color: #5c1410; border-radius: var(--radius); }
+.form-error:empty { display: none; }
+
+/* Draft spec sheet */
+.spec { position: relative; background: var(--ink); color: var(--on-dark); padding: clamp(1.25rem, 3vw, 2rem); display: grid; gap: var(--s3); min-width: 0; }
+@media (min-width: 1000px) { .spec { position: sticky; top: 6rem; } }
+.spec::before, .spec::after { content: ""; position: absolute; top: 10px; width: 7px; height: 7px; border-radius: 50%; background: rgba(219, 230, 238, 0.25); }
+.spec::before { left: 10px; } .spec::after { right: 10px; }
+.spec-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+.spec-head h2 { font: 800 1.7rem/1 var(--display); text-transform: uppercase; color: #fff; }
+.spec-head span { font: 500 0.68rem/1.2 var(--mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--on-dark-2); }
+.plan { background: #0a1724; border: 1px solid rgba(92, 225, 230, 0.18); aspect-ratio: 32 / 22; }
+.plan svg { width: 100%; height: 100%; display: block; }
+.spec dl { margin: 0; display: grid; grid-template-columns: auto 1fr; font-size: 0.92rem; }
+.spec dt, .spec dd { padding: 0.55rem 0; border-bottom: 1px solid rgba(219, 230, 238, 0.12); }
+.spec dt { font: 500 0.7rem/1.6 var(--mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--on-dark-2); padding-right: 1rem; }
+.spec dd { margin: 0; text-align: right; color: #fff; font-weight: 600; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.spec dd.empty { color: rgba(219, 230, 238, 0.35); font-weight: 400; }
+.spec-foot { font-size: 0.85rem; color: var(--on-dark-2); }
+
+/* Done state */
+.done { display: grid; gap: var(--s3); }
+.done .display { font-size: clamp(2.4rem, 5vw, 3.5rem); }
+.done .stamp { justify-self: start; }
+.preview-note { border: 1.5px dashed var(--line); padding: 0.9rem 1rem; font-size: 0.9rem; color: var(--steel); }
+
+@media (max-width: 560px) {
+  .form-alt { order: 3; flex-basis: 100%; text-align: center; }
+  .form-nav .btn-cta { min-width: 0; flex: 1; }
+}
