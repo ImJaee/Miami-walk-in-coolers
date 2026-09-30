@@ -17,8 +17,8 @@
   --blue-deep:  #003580;
   --frost:      #5ce1e6;   /* logo cyan: tags and highlights on dark */
   --frost-ink:  #0a6f77;   /* cyan for text on light grounds */
-  --cta:        #c94a0b;   /* Signal: quote actions only */
-  --cta-hover:  #a93c07;
+  --cta:        #00803f;   /* Palm green: quote actions only */
+  --cta-hover:  #006532;
   --on-dark:    #dbe6ee;
   --on-dark-2:  #93a7b8;
   --emboss:     rgba(12, 27, 42, 0.05);
@@ -38,8 +38,6 @@
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
-/* Tweak: quote button color */
-:root[data-cta="green"] { --cta: #00803f; --cta-hover: #006532; }
 
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; scroll-padding-top: 6rem; }
@@ -270,7 +268,6 @@ p { margin: 0; text-wrap: pretty; }
 .pick-body h3 { font-size: 1.7rem; }
 .pick-body .tag { justify-self: start; color: var(--frost-ink); }
 .pick-go { display: flex; justify-content: space-between; align-items: center; font: 600 0.78rem/1 var(--mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--cta); margin-top: auto; padding-top: 0.4rem; }
-.pick .price { font: 600 0.85rem/1.2 var(--mono); color: var(--ink); }
 .pick:last-child { grid-column: 1 / -1; }
 .pick:last-child .pick-img { aspect-ratio: 16 / 9; }
 @media (min-width: 900px) {
@@ -278,7 +275,6 @@ p { margin: 0; text-wrap: pretty; }
   .pick:last-child { grid-column: auto; }
   .pick:last-child .pick-img { aspect-ratio: 4 / 5; }
 }
-:root:not([data-prices="on"]) .price { display: none; }
 
 /* ---------- Process ---------- */
 .process { background: var(--galv-2); }
@@ -412,31 +408,7 @@ select.input { appearance: none; background-image: linear-gradient(45deg, transp
 body:has(.action-bar) { padding-bottom: 4.5rem; }
 @media (min-width: 1040px) { .action-bar { display: none; } body:has(.action-bar) { padding-bottom: 0; } }
 
-/* ---------- Tweaks (preview only) ---------- */
-.tweaks-toggle {
-  position: fixed; right: 1rem; bottom: 5.5rem; z-index: 60;
-  min-height: 2.6rem; padding: 0 1rem;
-  font: 600 0.75rem/1 var(--mono); letter-spacing: 0.12em; text-transform: uppercase;
-  background: var(--frost); color: var(--ink); border: 0; border-radius: var(--radius);
-  box-shadow: var(--lift); cursor: pointer;
-}
-@media (min-width: 1040px) { .tweaks-toggle { bottom: 1rem; } }
-body:not(:has(.action-bar)) .tweaks-toggle { bottom: 1rem; }
-body:not(:has(.action-bar)) .tweaks { bottom: 4.25rem; }
-.tweaks {
-  position: fixed; right: 1rem; bottom: 8.75rem; z-index: 60;
-  width: min(20rem, calc(100vw - 2rem));
-  background: var(--plate); border: 1.5px solid var(--ink); border-radius: var(--radius);
-  box-shadow: var(--lift);
-  padding: var(--s3); display: grid; gap: var(--s3);
-}
-@media (min-width: 1040px) { .tweaks { bottom: 4.25rem; } }
-.tweaks h2 { font: 800 1.5rem/1 var(--display); text-transform: uppercase; }
-.tweaks fieldset { border: 0; margin: 0; padding: 0; display: grid; gap: 0.5rem; }
-.tweaks legend { font: 600 0.72rem/1.3 var(--mono); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.5rem; }
-.tweaks p { font-size: 0.82rem; color: var(--steel); }
-
-/* Segmented control (used by tweaks and the quote form) */
+/* Segmented control (quote form) */
 .seg { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .seg label { position: relative; flex: 1 1 auto; }
 .seg input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
