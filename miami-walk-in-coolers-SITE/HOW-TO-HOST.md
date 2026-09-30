@@ -1,4 +1,4 @@
-# Hosting the Miami Walk-In Cooler site
+# Hosting the Miami Walk-In Coolers site
 
 This folder **is** the website — the exact files, exact design. Host it anywhere that serves
 static files and it will look identical to the originals. No WordPress, no build step.
@@ -14,7 +14,7 @@ static files and it will look identical to the originals. No WordPress, no build
    commented "Analytics slot". Replace `G-XXXXXXXXXX` with your GA4 ID and uncomment it
    (or paste your Google Tag Manager snippet there instead).
 3. **After deploying,** add the domain in Vercel, then in Google Search Console verify the
-   site and submit `https://miamiwalkincooler.com/sitemap.xml`. SSL is automatic on Vercel.
+   site and submit `https://miamiwalkincoolers.com/sitemap.xml`. SSL is automatic on Vercel.
 
 Already included in this folder: `sitemap.xml`, `robots.txt`, `favicon.ico`, `vercel.json`
 (clean URLs), WebP images, Open Graph/canonical tags, and LocalBusiness schema on the home page.
