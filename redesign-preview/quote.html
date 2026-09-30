@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Get a Quote · Miami Walk-In Coolers Preview</title>
 <meta name="robots" content="noindex, nofollow">
-<meta name="description" content="Design preview: price a custom walk-in cooler or freezer in four short steps.">
+<meta name="description" content="Design preview: get a fast quote on a walk-in cooler, freezer, combo box, doors or equipment in four short steps.">
 <meta name="theme-color" content="#0c1b2a">
 <link rel="icon" href="assets/logo.webp" type="image/webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -43,7 +43,7 @@
   <section class="container quote-head">
     <p class="eyebrow">Free quote · usually answered the same business day</p>
     <div class="quote-head-row">
-      <h1 class="display">Price your <span class="accent">walk-in</span></h1>
+      <h1 class="display">Get a fast <span class="accent">quote</span></h1>
       <a class="call-block" href="tel:+17865921077">
         <span class="label">Rather talk?</span>
         <strong>(786) 592-1077</strong>
@@ -70,20 +70,22 @@
 
         <!-- Step 1 -->
         <fieldset class="step" data-step="1">
-          <legend tabindex="-1"><span class="count">Step 1 of 4</span><span class="display">What are you building?</span></legend>
+          <legend tabindex="-1"><span class="count">Step 1 of 4</span><span class="display">What do you need?</span></legend>
           <div class="type-grid">
-            <label class="type"><input type="radio" name="Unit Type" value="Walk-in cooler" data-key="cooler" data-temp="32–50°F" required>
+            <label class="type"><input type="radio" name="What do you need?" value="Walk-in cooler" data-key="cooler" data-temp="32–50°F" required>
               <span class="type-card"><img src="assets/cooler.webp" alt="" loading="lazy"><span class="t-body"><strong>Walk-in cooler</strong><span>32–50°F</span></span></span></label>
-            <label class="type"><input type="radio" name="Unit Type" value="Walk-in freezer" data-key="freezer" data-temp="−10–0°F">
+            <label class="type"><input type="radio" name="What do you need?" value="Walk-in freezer" data-key="freezer" data-temp="−10–0°F">
               <span class="type-card"><img src="assets/freezer.webp" alt="" loading="lazy"><span class="t-body"><strong>Walk-in freezer</strong><span>−10–0°F</span></span></span></label>
-            <label class="type"><input type="radio" name="Unit Type" value="Combo cooler/freezer" data-key="combo" data-temp="32–50°F + −10–0°F">
-              <span class="type-card"><img src="assets/combo.webp" alt="" loading="lazy"><span class="t-body"><strong>Combo unit</strong><span>Cooler + freezer</span></span></span></label>
-            <label class="type"><input type="radio" name="Unit Type" value="Beer cave / glass-door cooler" data-key="beer-cave" data-temp="32–50°F">
+            <label class="type"><input type="radio" name="What do you need?" value="Combo box" data-key="combo" data-temp="32–50°F + −10–0°F">
+              <span class="type-card"><img src="assets/combo.webp" alt="" loading="lazy"><span class="t-body"><strong>Combo box</strong><span>Cooler + freezer</span></span></span></label>
+            <label class="type"><input type="radio" name="What do you need?" value="Beer cave / glass doors" data-key="beer-cave" data-temp="32–50°F">
               <span class="type-card"><img src="assets/beer-cave.webp" alt="" loading="lazy"><span class="t-body"><strong>Beer cave</strong><span>Glass doors</span></span></span></label>
-            <label class="type"><input type="radio" name="Unit Type" value="Door or part" data-key="door" data-temp="">
-              <span class="type-card"><img src="assets/door.webp" alt="" loading="lazy"><span class="t-body"><strong>Door or part</strong><span>Replacement</span></span></span></label>
-            <label class="type"><input type="radio" name="Unit Type" value="Refrigeration or restaurant equipment" data-key="equipment" data-temp="">
-              <span class="type-card"><img src="assets/condensing.webp" alt="" loading="lazy"><span class="t-body"><strong>Equipment</strong><span>Refrigeration &amp; kitchen</span></span></span></label>
+            <label class="type"><input type="radio" name="What do you need?" value="Doors only" data-key="door" data-temp="">
+              <span class="type-card"><img src="assets/door.webp" alt="" loading="lazy"><span class="t-body"><strong>Doors only</strong><span>Custom &amp; replacement</span></span></span></label>
+            <label class="type"><input type="radio" name="What do you need?" value="Refrigeration" data-key="refrigeration" data-temp="">
+              <span class="type-card"><img src="assets/condensing.webp" alt="" loading="lazy"><span class="t-body"><strong>Refrigeration</strong><span>Split &amp; self-contained</span></span></span></label>
+            <label class="type"><input type="radio" name="What do you need?" value="Restaurant equipment" data-key="restaurant" data-temp="">
+              <span class="type-card"><img src="assets/restaurant.webp" alt="" loading="lazy"><span class="t-body"><strong>Restaurant equipment</strong><span>Turbo Air &amp; more</span></span></span></label>
           </div>
           <p class="error-msg" id="err-type" aria-live="polite"></p>
         </fieldset>
@@ -93,15 +95,15 @@
           <legend tabindex="-1"><span class="count">Step 2 of 4</span><span class="display" id="step2-title">Size &amp; setup</span></legend>
 
           <div class="step-walkin">
-            <p class="step-intro">Interior size in feet. Rough numbers are fine; we confirm everything before building.</p>
+            <p class="step-intro">Width × length × height in feet, if you know it. Rough numbers are fine; we confirm everything before building.</p>
             <div class="dims">
-              <div class="field">
-                <label for="q-len">Length</label>
-                <div class="dim-input"><input class="input" id="q-len" name="Interior Length (ft)" inputmode="decimal" placeholder="10" autocomplete="off"><span class="unit">ft</span></div>
-              </div>
               <div class="field">
                 <label for="q-wid">Width</label>
                 <div class="dim-input"><input class="input" id="q-wid" name="Interior Width (ft)" inputmode="decimal" placeholder="8" autocomplete="off"><span class="unit">ft</span></div>
+              </div>
+              <div class="field">
+                <label for="q-len">Length</label>
+                <div class="dim-input"><input class="input" id="q-len" name="Interior Length (ft)" inputmode="decimal" placeholder="10" autocomplete="off"><span class="unit">ft</span></div>
               </div>
               <div class="field">
                 <label for="q-hgt">Height</label>
@@ -109,7 +111,7 @@
               </div>
             </div>
             <p class="error-msg" id="err-dims" aria-live="polite"></p>
-            <label class="check"><input type="checkbox" id="q-unsure" name="Size Help" value="Not sure of the size, please help me measure"><span>I'm not sure of the size yet. Help me measure.</span></label>
+            <label class="check"><input type="checkbox" id="q-unsure" name="Size Help" value="Not sure of the size, please help me size it"><span>I'm not sure of the size yet. Help me size it.</span></label>
 
             <fieldset class="group">
               <legend class="label">Where will it go?</legend>
@@ -119,10 +121,10 @@
               </div>
             </fieldset>
             <fieldset class="group">
-              <legend class="label">Floor</legend>
+              <legend class="label">Floor or no floor?</legend>
               <div class="seg">
-                <label><input type="radio" name="Floor" value="Insulated floor"><span>Insulated floor</span></label>
-                <label><input type="radio" name="Floor" value="No floor (existing slab)"><span>No floor, on slab</span></label>
+                <label><input type="radio" name="Floor" value="Floor"><span>Floor</span></label>
+                <label><input type="radio" name="Floor" value="No floor"><span>No floor</span></label>
                 <label><input type="radio" name="Floor" value="Not sure" checked><span>Not sure</span></label>
               </div>
             </fieldset>
@@ -137,27 +139,43 @@
           </div>
 
           <div class="step-parts" hidden>
-            <p class="step-intro">Pick everything that applies. A photo of the old part or a model number helps; you can text it to the shop after sending this.</p>
+            <p class="step-intro">Pick everything that applies. Model numbers or a photo help; you can text a photo to the shop after sending this.</p>
             <fieldset class="group">
-              <legend class="label">What do you need?</legend>
-              <div class="chips" id="parts-chips">
-                <label><input type="checkbox" name="Parts Needed" value="Walk-in door"><span>Walk-in door</span></label>
-                <label><input type="checkbox" name="Parts Needed" value="Hinges, handles or closers"><span>Hinges, handles, closers</span></label>
-                <label><input type="checkbox" name="Parts Needed" value="Gaskets"><span>Gaskets</span></label>
-                <label><input type="checkbox" name="Parts Needed" value="Condensing unit"><span>Condensing unit</span></label>
-                <label><input type="checkbox" name="Parts Needed" value="Evaporator"><span>Evaporator</span></label>
-                <label><input type="checkbox" name="Parts Needed" value="Restaurant equipment"><span>Restaurant equipment</span></label>
-                <label><input type="checkbox" name="Parts Needed" value="Something else"><span>Something else</span></label>
+              <legend class="label">Which items?</legend>
+              <div class="chips" data-for="door">
+                <label><input type="checkbox" name="Items Needed" value="Walk-in door"><span>Walk-in door</span></label>
+                <label><input type="checkbox" name="Items Needed" value="Replacement door"><span>Replacement door</span></label>
+                <label><input type="checkbox" name="Items Needed" value="Sliding door"><span>Sliding door</span></label>
+                <label><input type="checkbox" name="Items Needed" value="Glass doors or windows"><span>Glass doors or windows</span></label>
+                <label><input type="checkbox" name="Items Needed" value="Hardware (hinges, handles, closers, gaskets)"><span>Hardware (hinges, handles, closers, gaskets)</span></label>
+              </div>
+              <div class="chips" data-for="refrigeration">
+                <label><input type="checkbox" name="Items Needed" value="Split system"><span>Split system</span></label>
+                <label><input type="checkbox" name="Items Needed" value="Self-contained system"><span>Self-contained system</span></label>
+                <label><input type="checkbox" name="Items Needed" value="Compressor"><span>Compressor</span></label>
+                <label><input type="checkbox" name="Items Needed" value="Condensing unit"><span>Condensing unit</span></label>
+                <label><input type="checkbox" name="Items Needed" value="Evaporator coil"><span>Evaporator coil</span></label>
+                <label><input type="checkbox" name="Items Needed" value="Controls"><span>Controls</span></label>
+                <label><input type="checkbox" name="Items Needed" value="Not sure, help me pick"><span>Not sure, help me pick</span></label>
+              </div>
+              <div class="chips" data-for="restaurant">
+                <label><input type="checkbox" name="Items Needed" value="Glass door merchandisers"><span>Glass door merchandisers</span></label>
+                <label><input type="checkbox" name="Items Needed" value="Open air &amp; display cases"><span>Open air &amp; display cases</span></label>
+                <label><input type="checkbox" name="Items Needed" value="Reach-in refrigerators &amp; freezers"><span>Reach-in refrigerators &amp; freezers</span></label>
+                <label><input type="checkbox" name="Items Needed" value="Prep tables"><span>Prep tables</span></label>
+                <label><input type="checkbox" name="Items Needed" value="Undercounters &amp; chef bases"><span>Undercounters &amp; chef bases</span></label>
+                <label><input type="checkbox" name="Items Needed" value="Bar refrigeration"><span>Bar refrigeration</span></label>
+                <label><input type="checkbox" name="Items Needed" value="Walk-in shelving"><span>Walk-in shelving</span></label>
               </div>
               <p class="error-msg" id="err-parts" aria-live="polite"></p>
             </fieldset>
             <div class="field">
-              <label for="q-opening">Door opening, if it's a door <span style="text-transform:none;letter-spacing:0;font-family:var(--body);font-weight:500;color:var(--steel)">(optional)</span></label>
+              <label for="q-opening">Door opening size, if you need a door <span style="text-transform:none;letter-spacing:0;font-family:var(--body);font-weight:500;color:var(--steel)">(optional)</span></label>
               <input class="input" id="q-opening" name="Door Opening" placeholder="e.g. 34 in × 78 in" autocomplete="off">
             </div>
             <div class="field">
               <label for="q-part-details">Details <span style="text-transform:none;letter-spacing:0;font-family:var(--body);font-weight:500;color:var(--steel)">(optional)</span></label>
-              <textarea class="input" id="q-part-details" name="Part Details" placeholder="Model numbers, brand, what failed…"></textarea>
+              <textarea class="input" id="q-part-details" name="Item Details" placeholder="Model numbers, sizes, quantities…"></textarea>
             </div>
           </div>
         </fieldset>
@@ -167,8 +185,9 @@
           <legend tabindex="-1"><span class="count">Step 3 of 4</span><span class="display">Where &amp; when</span></legend>
           <div class="grid-2">
             <div class="field">
-              <label for="q-zip">Delivery ZIP code</label>
-              <input class="input" id="q-zip" name="Delivery ZIP" inputmode="numeric" autocomplete="postal-code" maxlength="5" placeholder="33157" aria-describedby="err-zip" required>
+              <label for="q-zip">Ship-to ZIP code</label>
+              <input class="input" id="q-zip" name="Ship-to ZIP Code" inputmode="numeric" autocomplete="postal-code" maxlength="5" placeholder="33157" aria-describedby="zip-hint err-zip" required>
+              <p class="hint" id="zip-hint">We need this to price shipping.</p>
               <p class="error-msg" id="err-zip" aria-live="polite"></p>
             </div>
             <div class="field">
@@ -205,8 +224,8 @@
               <p class="error-msg" id="err-name" aria-live="polite"></p>
             </div>
             <div class="field">
-              <label for="q-company">Business name <span style="text-transform:none;letter-spacing:0;font-family:var(--body);font-weight:500;color:var(--steel)">(optional)</span></label>
-              <input class="input" id="q-company" name="Business Name" autocomplete="organization">
+              <label for="q-company">Company name <span style="text-transform:none;letter-spacing:0;font-family:var(--body);font-weight:500;color:var(--steel)">(optional)</span></label>
+              <input class="input" id="q-company" name="Company Name" autocomplete="organization">
             </div>
             <div class="field">
               <label for="q-phone">Phone</label>
@@ -220,8 +239,8 @@
             </div>
           </div>
           <div class="field">
-            <label for="q-msg">Anything else we should know? <span style="text-transform:none;letter-spacing:0;font-family:var(--body);font-weight:500;color:var(--steel)">(optional)</span></label>
-            <textarea class="input" id="q-msg" name="Message" placeholder="Access to the site, shelving, door side, deadlines…"></textarea>
+            <label for="q-msg">Tell us more <span style="text-transform:none;letter-spacing:0;font-family:var(--body);font-weight:500;color:var(--steel)">(optional)</span></label>
+            <textarea class="input" id="q-msg" name="Tell us more" placeholder="Door size or location, glass doors, windows, timeline — anything that helps."></textarea>
           </div>
         </fieldset>
 
@@ -255,7 +274,7 @@
         <dt>Interior</dt><dd data-spec="size" class="empty">—</dd>
         <dt>Floor area</dt><dd data-spec="area" class="empty">—</dd>
         <dt>Setup</dt><dd data-spec="setup" class="empty">—</dd>
-        <dt>Deliver to</dt><dd data-spec="zip" class="empty">—</dd>
+        <dt>Ship to</dt><dd data-spec="zip" class="empty">—</dd>
         <dt>Timeline</dt><dd data-spec="timeline" class="empty">—</dd>
       </dl>
       <p class="spec-foot">This sheet fills in as you answer and is sent with your request. The shop confirms every measurement before building.</p>

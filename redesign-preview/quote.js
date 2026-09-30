@@ -19,7 +19,7 @@
 
   /* ---------- helpers ---------- */
   function $(sel) { return form.querySelector(sel); }
-  function typeInput() { return $('input[name="Unit Type"]:checked'); }
+  function typeInput() { return $('input[name="What do you need?"]:checked'); }
   function typeKey() { var t = typeInput(); return t ? t.getAttribute('data-key') : ''; }
   function isWalkin() { return WALK_INS.indexOf(typeKey()) !== -1; }
   function num(el) {
@@ -50,8 +50,17 @@
     partsBox.hidden = walkin;
     walkinBox.querySelectorAll('input, select, textarea').forEach(function (el) { el.disabled = !walkin; });
     partsBox.querySelectorAll('input, select, textarea').forEach(function (el) { el.disabled = walkin; });
+    var key = typeKey();
+    partsBox.querySelectorAll('.chips[data-for]').forEach(function (g) {
+      var on = !walkin && g.getAttribute('data-for') === key;
+      g.hidden = !on;
+      g.querySelectorAll('input').forEach(function (el) { el.disabled = !on; });
+    });
+    var opening = document.getElementById('q-opening');
+    opening.closest('.field').hidden = key !== 'door';
+    opening.disabled = key !== 'door';
     if (walkin) syncUnsure();
-    document.getElementById('step2-title').textContent = walkin ? 'Size & setup' : 'What do you need?';
+    document.getElementById('step2-title').textContent = walkin ? 'Size & setup' : 'Which items?';
     document.getElementById('spec-title').textContent = walkin ? 'Your walk-in' : 'Your request';
     document.getElementById('plan').hidden = !walkin;
     progress[1].querySelector('.p-label').textContent = walkin ? 'Size' : 'Details';
@@ -71,8 +80,8 @@
     }
     if (step === 2) {
       if (!isWalkin()) {
-        var any = partsBox.querySelector('input[name="Parts Needed"]:checked');
-        return setError('err-parts', any ? '' : 'Pick at least one item, or choose “Something else”.');
+        var any = partsBox.querySelector('input[name="Items Needed"]:checked:not(:disabled)') || document.getElementById('q-part-details').value.trim();
+        return setError('err-parts', any ? '' : 'Pick at least one item, or tell us more in the details box.');
       }
       if (unsure.checked) return true;
       var L = num(dimInputs[0]), W = num(dimInputs[1]), H = num(dimInputs[2]);
@@ -101,7 +110,7 @@
   function focusFirstInvalid(step) {
     var el = steps[step - 1].querySelector('[aria-invalid="true"]') ||
              (step === 1 ? steps[0].querySelector('input[type="radio"]') : null) ||
-             (step === 2 && !isWalkin() ? partsBox.querySelector('input') : null);
+             (step === 2 && !isWalkin() ? partsBox.querySelector('input:not(:disabled)') : null);
     if (el) el.focus();
   }
 
@@ -176,7 +185,7 @@
       specSet('setup', [radioValue('Location'), radioValue('Floor') === 'Not sure' ? '' : radioValue('Floor'), radioValue('Refrigeration') === 'Include a system' ? 'With refrigeration' : ''].filter(Boolean).join(' · '));
     } else {
       var parts = [];
-      partsBox.querySelectorAll('input[name="Parts Needed"]:checked').forEach(function (c) { parts.push(c.value); });
+      partsBox.querySelectorAll('input[name="Items Needed"]:checked:not(:disabled)').forEach(function (c) { parts.push(c.value); });
       specSet('setup', parts.join(', '));
     }
     var zip = document.getElementById('q-zip').value.trim();
@@ -255,9 +264,9 @@
 
   form.addEventListener('input', updateSpec);
   form.addEventListener('change', function (e) {
-    if (e.target.name === 'Unit Type') { syncVariant(); setError('err-type', ''); }
+    if (e.target.name === 'What do you need?') { syncVariant(); setError('err-type', ''); }
     if (e.target === unsure) syncUnsure();
-    if (e.target.name === 'Parts Needed') setError('err-parts', '');
+    if (e.target.name === 'Items Needed') setError('err-parts', '');
     updateSpec();
   });
 
@@ -306,7 +315,7 @@
   } catch (e) { /* storage unavailable */ }
 
   var hash = (window.location.hash || '').replace('#', '');
-  var preset = hash && form.querySelector('input[name="Unit Type"][data-key="' + hash.replace(/[^a-z-]/g, '') + '"]');
+  var preset = hash && form.querySelector('input[name="What do you need?"][data-key="' + hash.replace(/[^a-z-]/g, '') + '"]');
   syncVariant();
   if (preset) {
     preset.checked = true;
