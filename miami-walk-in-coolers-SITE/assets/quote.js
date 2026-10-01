@@ -3,7 +3,6 @@
   var form = document.getElementById('quoteForm');
   if (!form) return;
 
-  var PLACEHOLDER_KEY = 'YOUR_WEB3FORMS_ACCESS_KEY';
   var WALK_INS = ['cooler', 'freezer', 'combo', 'beer-cave'];
   var steps = form.querySelectorAll('.step');
   var progress = form.querySelectorAll('.progress li');
@@ -279,15 +278,11 @@
     nextBtn.textContent = 'Sending…';
     formError.textContent = '';
 
-    if (data.get('access_key') === PLACEHOLDER_KEY) {
-      window.setTimeout(function () { finish(true); }, 500);
-      return;
-    }
     fetch('https://api.web3forms.com/submit', { method: 'POST', body: data })
       .then(function (r) { return r.json(); })
       .then(function (j) {
         if (!j.success) throw new Error(j.message || 'Request failed');
-        finish(false);
+        finish();
       })
       .catch(function () {
         nextBtn.disabled = false;
@@ -295,12 +290,11 @@
         formError.innerHTML = 'Your request didn’t go through. Please call <a href="tel:+17865921077">(786) 592-1077</a> or email <a href="mailto:miamiwalkincoolers@gmail.com">miamiwalkincoolers@gmail.com</a> and we’ll take it from there.';
       });
   }
-  function finish(preview) {
+  function finish() {
     var done = document.getElementById('done');
     var phone = document.getElementById('q-phone').value.trim();
     document.getElementById('done-text').textContent =
       'We’ll call you at ' + phone + ' with a price, usually the same business day (Mon–Fri, 8am–6pm ET). Your draft spec is on its way to the shop.';
-    document.getElementById('done-preview').hidden = !preview;
     form.hidden = true;
     done.hidden = false;
     var top = done.getBoundingClientRect().top + window.pageYOffset - 96;

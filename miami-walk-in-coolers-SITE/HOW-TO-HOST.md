@@ -3,16 +3,27 @@
 This folder **is** the website — the exact files, exact design. Host it anywhere that serves
 static files and it will look identical to the originals. No WordPress, no build step.
 
+## Editing pages
+
+The HTML pages in this folder are generated. Edit the page sources in `site-src/pages/`
+(shared header, footer and head live in `site-src/build.py`, the quote form in
+`site-src/partials/quote-form.html`), then run:
+
+    python3 site-src/build.py
+
+and commit the regenerated `.html` files. Styles and scripts are edited directly in
+`assets/` (`site.css`, `quote.css`, `site.js`, `quote.js`). Photos used by the pages are
+WebP files in `assets/img/`.
+
 ## Final setup before launch (3 quick owner steps)
 
 1. **Turn the forms on (required for quote/contact submissions).**
    Go to web3forms.com, enter the email that should receive submissions, and copy the free
-   Access Key. In `get-a-quote.html` and `contact.html`, find `YOUR_WEB3FORMS_ACCESS_KEY`
-   and replace it with that key. That's it — submissions will email the owner, with a
+   Access Key. In `site-src/partials/quote-form.html`, find `YOUR_WEB3FORMS_ACCESS_KEY`,
+   replace it with that key, and run the build (it updates Get a Quote and Contact). That's it — submissions will email the owner, with a
    built-in honeypot for spam and an on-page thank-you message.
-2. **Turn on analytics (optional but in the brief).** In each page's `<head>` there's a
-   commented "Analytics slot". Replace `G-XXXXXXXXXX` with your GA4 ID and uncomment it
-   (or paste your Google Tag Manager snippet there instead).
+2. **Turn on analytics (optional but in the brief).** In `site-src/build.py` (the `head` function) there's a
+   commented "Analytics slot". Replace `G-XXXXXXXXXX` with your GA4 ID, uncomment it and run the build.
 3. **After deploying,** add the domain in Vercel, then in Google Search Console verify the
    site and submit `https://miamiwalkincoolers.com/sitemap.xml`. SSL is automatic on Vercel.
 
