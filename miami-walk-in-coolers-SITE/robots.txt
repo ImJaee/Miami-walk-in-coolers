@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://miamiwalkincooler.com/sitemap.xml
+Sitemap: https://miamiwalkincoolers.com/sitemap.xml
