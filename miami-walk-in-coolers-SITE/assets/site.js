@@ -1,4 +1,4 @@
-/* Shared behavior for the redesign preview: mobile menu and homepage quick-start. */
+/* Shared site behavior: mobile menu and homepage quick-start. */
 (function () {
   /* ----- Mobile menu ----- */
   var menuBtn = document.querySelector('.menu-btn');
@@ -27,7 +27,7 @@
         return;
       }
       try { sessionStorage.setItem('mwc-quick-zip', zip); } catch (e2) { /* ignore */ }
-      window.location.href = 'quote.html#' + type;
+      window.location.href = '/get-a-quote#' + type;
     });
   }
 })();
