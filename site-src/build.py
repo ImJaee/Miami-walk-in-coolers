@@ -29,7 +29,7 @@ OG_IMAGE = DOMAIN + "/images/miami-walk-in-coolers.webp"
 
 PHONE_DISPLAY = "(786) 592-1077"
 PHONE_TEL = "+17865921077"
-EMAIL = "miamiwalkincoolers@gmail.com"
+EMAIL = "info@miamiwalkincoolers.com"
 INSTAGRAM = "https://www.instagram.com/miamiwalkincoolers/"
 
 NAV = [
@@ -191,10 +191,10 @@ def footer():
       <div>
         <h2>Direct lines</h2>
         <ul class="footer-lines">
-          <li><span>Shaker Chehab</span><a href="tel:+13055821667">305-582-1667</a></li>
-          <li><span>Ahmed Chehab</span><a href="tel:+13052058184">305-205-8184</a></li>
           <li><span>Ian Chehab</span><a href="tel:+17867787681">786-778-7681</a></li>
-          <li><span>Nathan Chehab</span><a href="tel:+17864065929">786-406-5929</a></li>
+          <li><span>Nate Chehab</span><a href="tel:+17864065929">786-406-5929</a></li>
+          <li><span>Shaker Chehab</span><a href="tel:+13055821667">305-582-1667</a></li>
+          <li><span>Ahmad Chehab</span><a href="tel:+13052058184">305-205-8184</a></li>
         </ul>
       </div>
     </div>

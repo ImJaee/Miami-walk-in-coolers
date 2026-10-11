@@ -555,3 +555,29 @@ body:has(.action-bar) { padding-bottom: 4.5rem; }
   .footer-grid { grid-template-columns: 1.3fr 1fr 1fr 1.35fr 1.35fr; }
 }
 .footer-lines span { white-space: nowrap; }
+
+/* Photos shown whole (no crop) where the client asked to "zoom out" */
+.prod-img--fit img, .feature-img--fit img { object-fit: contain; background: var(--galv-2); }
+
+/* ---------- Background drafts (pick one, then fold into :root) ---------- */
+/* A: plain white */
+:root[data-bg="white"] { --galv: #ffffff; --galv-2: #f2f5f8; --emboss: transparent; }
+:root[data-bg="white"] .proof, :root[data-bg="white"] .closer { background: #f7f9fb; }
+/* B: icy blue tint */
+:root[data-bg="ice"] { --galv: #eaf3fc; --galv-2: #dbe9f8; --line: #c4d6ea; --emboss: transparent; }
+/* C: brand-blue hero band, white below */
+:root[data-bg="blue"] { --galv: #ffffff; --galv-2: #f2f5f8; --emboss: transparent; }
+:root[data-bg="blue"] .hero, :root[data-bg="blue"] .page-head, :root[data-bg="blue"] .quote-head:not(.quote-head--sub) {
+  background: linear-gradient(160deg, #003580 0%, #004aad 60%, #0b5fc7 100%); color: #fff;
+}
+:root[data-bg="blue"] .page-head + .section--tight { padding-top: var(--s5); }
+:root[data-bg="blue"] .hero h1, :root[data-bg="blue"] .page-head h1, :root[data-bg="blue"] .quote-head h1 { color: #fff; }
+:root[data-bg="blue"] .hero h1 .accent, :root[data-bg="blue"] .page-head h1 .accent, :root[data-bg="blue"] .quote-head h1 .accent { color: var(--frost); }
+:root[data-bg="blue"] .hero .lede, :root[data-bg="blue"] .page-head .lede, :root[data-bg="blue"] .quote-head .lede { color: #d6e6fb; }
+:root[data-bg="blue"] .hero .eyebrow, :root[data-bg="blue"] .crumbs, :root[data-bg="blue"] .crumbs a { color: var(--frost); }
+:root[data-bg="blue"] .hero .call-block, :root[data-bg="blue"] .quote-head .call-block { color: #fff; }
+:root[data-bg="blue"] .hero .call-block .label, :root[data-bg="blue"] .hero .call-block .hours,
+:root[data-bg="blue"] .quote-head .call-block .label, :root[data-bg="blue"] .quote-head .call-block .hours { color: #c3d8f5; }
+:root[data-bg="blue"] .hero .dim { color: #fff; }
+:root[data-bg="blue"] .hero .dim span { background: #0754b9; }
+:root[data-bg="blue"] .quote-head:not(.quote-head--sub) { max-width: none; padding-inline: max(var(--gutter), calc((100% - var(--max)) / 2 + var(--gutter))); margin-bottom: var(--s4); }

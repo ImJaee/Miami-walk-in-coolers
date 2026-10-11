@@ -1,4 +1,4 @@
-/* Guided quote form: 4 steps, live draft spec + floor plan, Web3Forms submit. */
+/* Guided quote form: 4 steps, live request summary, Web3Forms submit. */
 (function () {
   var form = document.getElementById('quoteForm');
   if (!form) return;
@@ -61,7 +61,6 @@
     if (walkin) syncUnsure();
     document.getElementById('step2-title').textContent = walkin ? 'Size & setup' : 'Which items?';
     document.getElementById('spec-title').textContent = walkin ? 'Your walk-in' : 'Your request';
-    document.getElementById('plan').hidden = !walkin;
     progress[1].querySelector('.p-label').textContent = walkin ? 'Size' : 'Details';
   }
   function syncUnsure() {
@@ -96,13 +95,15 @@
       return setError('err-zip', /^\d{5}$/.test(zip.value.trim()) ? '' : 'Enter the 5-digit ZIP where it will be delivered.', zip);
     }
     if (step === 4) {
-      var name = document.getElementById('q-name');
+      var first = document.getElementById('q-first');
+      var last = document.getElementById('q-last');
       var phone = document.getElementById('q-phone');
       var email = document.getElementById('q-email');
-      var ok1 = setError('err-name', name.value.trim() ? '' : 'Enter your name.', name);
+      var ok0 = setError('err-first', first.value.trim() ? '' : 'Enter your first name.', first);
+      var ok1 = setError('err-last', last.value.trim() ? '' : 'Enter your last name.', last);
       var ok2 = setError('err-phone', phone.value.replace(/\D/g, '').length >= 10 ? '' : 'Enter a phone number with area code.', phone);
       var ok3 = setError('err-email', /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim()) ? '' : 'Enter an email like you@business.com.', email);
-      return ok1 && ok2 && ok3;
+      return ok0 && ok1 && ok2 && ok3;
     }
     return true;
   }
@@ -153,8 +154,7 @@
     send();
   });
 
-  /* ---------- live spec + floor plan ---------- */
-  var plan = document.getElementById('plan');
+  /* ---------- live request summary ---------- */
   function specSet(key, text) {
     var dd = document.querySelector('[data-spec="' + key + '"]');
     dd.textContent = text || '—';
@@ -172,7 +172,6 @@
   function updateSpec() {
     var t = typeInput();
     specSet('type', t ? t.value : '');
-    specSet('temp', t ? t.getAttribute('data-temp') : '');
     var walkin = isWalkin();
     var L = num(dimInputs[0]), W = num(dimInputs[1]), H = num(dimInputs[2]);
     var hasLW = walkin && !unsure.checked && L >= 4 && W >= 4 && L <= 100 && W <= 100;
@@ -188,77 +187,16 @@
       specSet('setup', parts.join(', '));
     }
     var zip = document.getElementById('q-zip').value.trim();
-    specSet('zip', /^\d{5}$/.test(zip) ? zip : '');
+    var place = [document.getElementById('q-ship-city').value.trim(), document.getElementById('q-ship-state').value.trim()].filter(Boolean).join(', ');
+    specSet('zip', /^\d{5}$/.test(zip) ? (place ? place + ' ' : '') + zip : '');
     specSet('timeline', current >= 3 || reached >= 3 ? radioValue('Timeline') : '');
-    drawPlan(hasLW ? L : 0, hasLW ? W : 0);
   }
 
-  function drawPlan(L, W) {
-    var VW = 320, VH = 220;
-    var ink = '#93a7b8', frost = '#5ce1e6', text = '#dbe6ee', bg = '#0a1724';
-    var key = typeKey();
-    var svg = '<svg viewBox="0 0 ' + VW + ' ' + VH + '" role="img" aria-label="' +
-      (L ? 'Floor plan, ' + Math.round(L * W) + ' square feet' : 'Floor plan placeholder') + '" font-family="IBM Plex Mono, monospace">';
-    if (!L) {
-      var msg = key && WALK_INS.indexOf(key) === -1 ? 'Floor plan is for walk-ins' : 'Enter a size to draw the floor plan';
-      svg += '<rect x="50" y="45" width="220" height="125" fill="none" stroke="' + ink + '" stroke-opacity=".5" stroke-dasharray="5 5"/>' +
-             '<text x="160" y="112" text-anchor="middle" font-size="10" letter-spacing="1" fill="' + ink + '">' + msg.toUpperCase() + '</text></svg>';
-      plan.innerHTML = svg;
-      return;
-    }
-    var padL = 46, padT = 38, availW = 250, availH = 132;
-    var s = Math.min(availW / L, availH / W);
-    var rw = L * s, rh = W * s;
-    var x = padL + (availW - rw) / 2, y = padT + (availH - rh) / 2;
-    // 1-ft grid when it reads clearly
-    if (s >= 7) {
-      for (var gx = 1; gx < L; gx++) svg += '<line x1="' + (x + gx * s) + '" y1="' + y + '" x2="' + (x + gx * s) + '" y2="' + (y + rh) + '" stroke="' + ink + '" stroke-opacity=".12"/>';
-      for (var gy = 1; gy < W; gy++) svg += '<line x1="' + x + '" y1="' + (y + gy * s) + '" x2="' + (x + rw) + '" y2="' + (y + gy * s) + '" stroke="' + ink + '" stroke-opacity=".12"/>';
-    }
-    svg += '<rect x="' + x + '" y="' + y + '" width="' + rw + '" height="' + rh + '" fill="' + frost + '" fill-opacity=".06" stroke="' + frost + '" stroke-width="2.5"/>';
-
-    // entry door on the front wall, swinging out
-    var dw = Math.min(3 * s, rw * 0.3, 30);
-    var dx = x + rw - dw - Math.min(s, 10), dy = y + rh;
-    svg += '<line x1="' + dx + '" y1="' + dy + '" x2="' + (dx + dw) + '" y2="' + dy + '" stroke="' + bg + '" stroke-width="4"/>' +
-           '<line x1="' + (dx + dw) + '" y1="' + dy + '" x2="' + (dx + dw) + '" y2="' + (dy + dw) + '" stroke="' + text + '" stroke-width="1.5"/>' +
-           '<path d="M' + dx + ' ' + dy + ' A' + dw + ' ' + dw + ' 0 0 0 ' + (dx + dw) + ' ' + (dy + dw) + '" fill="none" stroke="' + text + '" stroke-opacity=".6" stroke-dasharray="3 3"/>';
-
-    if (key === 'combo') {
-      var px = x + rw / 2;
-      svg += '<line x1="' + px + '" y1="' + y + '" x2="' + px + '" y2="' + (y + rh) + '" stroke="' + frost + '" stroke-width="2"/>' +
-             '<text x="' + (x + rw / 4) + '" y="' + (y + 14) + '" text-anchor="middle" font-size="8" letter-spacing="1" fill="' + text + '">COOLER</text>' +
-             '<text x="' + (x + rw * 0.75) + '" y="' + (y + 14) + '" text-anchor="middle" font-size="8" letter-spacing="1" fill="' + text + '">FREEZER</text>';
-    }
-    if (key === 'beer-cave') {
-      var gEnd = dx - Math.min(s, 8), seg = Math.max(2.5 * s, 12), gxPos = x + 4;
-      while (gxPos + seg <= gEnd) {
-        svg += '<rect x="' + gxPos + '" y="' + (dy - 3) + '" width="' + (seg - 3) + '" height="6" fill="' + frost + '"/>';
-        gxPos += seg;
-      }
-      if (gxPos > x + 4) svg += '<text x="' + ((x + gxPos) / 2) + '" y="' + (dy + 16) + '" text-anchor="middle" font-size="7.5" letter-spacing="1" fill="' + frost + '">GLASS DOORS</text>';
-    }
-
-    // dimension lines
-    var ty = y - 16, lx = x - 16;
-    svg += '<g stroke="' + ink + '" stroke-width="1.2">' +
-           '<line x1="' + x + '" y1="' + ty + '" x2="' + (x + rw) + '" y2="' + ty + '"/>' +
-           '<line x1="' + x + '" y1="' + (ty - 5) + '" x2="' + x + '" y2="' + (ty + 5) + '"/>' +
-           '<line x1="' + (x + rw) + '" y1="' + (ty - 5) + '" x2="' + (x + rw) + '" y2="' + (ty + 5) + '"/>' +
-           '<line x1="' + lx + '" y1="' + y + '" x2="' + lx + '" y2="' + (y + rh) + '"/>' +
-           '<line x1="' + (lx - 5) + '" y1="' + y + '" x2="' + (lx + 5) + '" y2="' + y + '"/>' +
-           '<line x1="' + (lx - 5) + '" y1="' + (y + rh) + '" x2="' + (lx + 5) + '" y2="' + (y + rh) + '"/></g>';
-    var lLabel = feet(L), wLabel = feet(W);
-    svg += '<rect x="' + (x + rw / 2 - 26) + '" y="' + (ty - 7) + '" width="52" height="14" fill="' + bg + '"/>' +
-           '<text x="' + (x + rw / 2) + '" y="' + (ty + 3.5) + '" text-anchor="middle" font-size="10" font-weight="600" fill="' + text + '">' + lLabel + '</text>' +
-           '<g transform="translate(' + lx + ' ' + (y + rh / 2) + ') rotate(-90)">' +
-           '<rect x="-26" y="-7" width="52" height="14" fill="' + bg + '"/>' +
-           '<text x="0" y="3.5" text-anchor="middle" font-size="10" font-weight="600" fill="' + text + '">' + wLabel + '</text></g>';
-    if (rw > 90 && rh > 44 && key !== 'combo') {
-      svg += '<text x="' + (x + rw / 2) + '" y="' + (y + rh / 2 + 4) + '" text-anchor="middle" font-size="11" letter-spacing="1.5" font-weight="600" fill="' + frost + '">' + Math.round(L * W) + ' SQ FT</text>';
-    }
-    svg += '<text x="' + (VW - 8) + '" y="' + (VH - 8) + '" text-anchor="end" font-size="7" letter-spacing="1" fill="' + ink + '">INTERIOR · NOT TO SCALE FOR BUILD</text></svg>';
-    plan.innerHTML = svg;
+  var billing = document.getElementById('q-billing');
+  var billingSame = document.getElementById('q-billing-same');
+  function syncBilling() {
+    billing.disabled = billingSame.checked;
+    if (billingSame.checked) billing.value = '';
   }
 
   form.addEventListener('input', updateSpec);
@@ -266,6 +204,7 @@
     if (e.target.name === 'What do you need?') { syncVariant(); setError('err-type', ''); }
     if (e.target === unsure) syncUnsure();
     if (e.target.name === 'Items Needed') setError('err-parts', '');
+    if (e.target.id === 'q-billing-same') syncBilling();
     updateSpec();
   });
 
@@ -287,7 +226,7 @@
       .catch(function () {
         nextBtn.disabled = false;
         nextBtn.innerHTML = original;
-        formError.innerHTML = 'Your request didn’t go through. Please call <a href="tel:+17865921077">(786) 592-1077</a> or email <a href="mailto:miamiwalkincoolers@gmail.com">miamiwalkincoolers@gmail.com</a> and we’ll take it from there.';
+        formError.innerHTML = 'Your request didn’t go through. Please call <a href="tel:+17865921077">(786) 592-1077</a> or email <a href="mailto:info@miamiwalkincoolers.com">info@miamiwalkincoolers.com</a> and we’ll take it from there.';
       });
   }
   function finish() {
