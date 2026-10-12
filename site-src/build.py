@@ -13,7 +13,8 @@ the generated HTML:
 
     python3 site-src/build.py
 
-Snippets: {{QUOTE_FORM}} inserts site-src/partials/quote-form.html.
+Snippets: {{QUOTE_FORM}} inserts site-src/partials/quote-form.html; {{BRANDS}} inserts
+the "Brands we carry" logo row.
 Images: <img src="/assets/img/NAME.webp"> gets width/height filled in from the
 file, plus loading="lazy" unless the tag already sets fetchpriority or loading.
 """
@@ -212,6 +213,18 @@ ACTION_BAR = f"""<div class="action-bar">
 </div>"""
 
 
+BRANDS = """<section class="brands-strip" aria-labelledby="brands-title">
+    <div class="container">
+      <p class="eyebrow" id="brands-title">Brands we carry</p>
+      <ul class="brand-logos">
+        <li><img src="/assets/img/brand-turbo-air.webp" alt="Turbo Air"></li>
+        <li><img src="/assets/img/brand-tecumseh.webp" alt="Tecumseh"></li>
+        <li><img src="/assets/img/brand-heatcraft.webp" alt="Heatcraft"></li>
+      </ul>
+    </div>
+  </section>"""
+
+
 def cta_band(title, text, button="Get a fast quote"):
     """Closing call-to-action used at the bottom of inner pages."""
     return f"""<section class="section closer" aria-labelledby="cta-title">
@@ -243,6 +256,7 @@ def build_page(src):
     meta = json.loads(m.group(1))
     body = text[m.end():]
     body = body.replace("{{QUOTE_FORM}}", (ROOT / "partials" / "quote-form.html").read_text())
+    body = body.replace("{{BRANDS}}", BRANDS)
     body = re.sub(
         r"\{\{CTA\s+(\{.*?\})\}\}",
         lambda c: cta_band(**json.loads(c.group(1))),
