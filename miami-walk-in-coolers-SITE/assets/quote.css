@@ -122,3 +122,8 @@
 .quote-head .lede { max-width: 40rem; }
 .quote-head--sub { padding-top: var(--s4); gap: var(--s2); }
 .quote-head--sub h2 { font-size: clamp(1.6rem, 3vw, 2.3rem); }
+
+.opt { text-transform: none; letter-spacing: 0; font-family: var(--body); font-weight: 500; color: var(--steel); }
+.addr-row { display: grid; gap: 0.75rem; grid-template-columns: 1fr; }
+@media (min-width: 560px) { .addr-row { grid-template-columns: 2fr 1fr 1fr; } }
+.field .check { margin-top: 0.4rem; font-size: 0.95rem; }

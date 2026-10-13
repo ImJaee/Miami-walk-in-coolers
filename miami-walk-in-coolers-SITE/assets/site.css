@@ -7,8 +7,8 @@
   color-scheme: light;
 
   /* Color */
-  --galv:       #eef2f5;   /* page ground: galvalume panel */
-  --galv-2:     #e1e7ec;   /* recessed band */
+  --galv:       #ffffff;   /* page ground: plain white (client pick A) */
+  --galv-2:     #f2f5f8;   /* recessed band */
   --plate:      #ffffff;   /* raised surfaces */
   --ink:        #0c1b2a;   /* text, dark bands */
   --ink-2:      #152a3e;   /* raised surface on dark */
@@ -22,7 +22,6 @@
   --cta-hover:  #006532;
   --on-dark:    #dbe6ee;
   --on-dark-2:  #93a7b8;
-  --emboss:     rgba(12, 27, 42, 0.05);
   --error:      #b3261e;
 
   /* Type */
@@ -47,11 +46,6 @@ body {
   font: 400 1.0625rem/1.6 var(--body);
   color: var(--ink);
   background-color: var(--galv);
-  background-image:
-    radial-gradient(var(--emboss) 1.1px, transparent 1.4px),
-    radial-gradient(var(--emboss) 1.1px, transparent 1.4px);
-  background-size: 12px 12px;
-  background-position: 0 0, 6px 6px;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
@@ -555,3 +549,14 @@ body:has(.action-bar) { padding-bottom: 4.5rem; }
   .footer-grid { grid-template-columns: 1.3fr 1fr 1fr 1.35fr 1.35fr; }
 }
 .footer-lines span { white-space: nowrap; }
+
+/* Photos shown whole (no crop) where the client asked to "zoom out" */
+.prod-img--fit img, .feature-img--fit img { object-fit: contain; background: var(--galv-2); }
+
+.proof, .closer { background: #f7f9fb; }
+
+/* Brands we carry */
+.brands-strip { padding-block: var(--s5); border-block: 1px solid var(--line); background: var(--plate); }
+.brands-strip .container { display: grid; gap: var(--s3); justify-items: center; text-align: center; }
+.brand-logos { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: var(--s4) clamp(2rem, 6vw, 4.5rem); }
+.brand-logos img { height: clamp(40px, 5vw, 56px); width: auto; }

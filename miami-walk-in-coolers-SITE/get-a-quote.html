@@ -80,8 +80,8 @@
       <form class="quote-form" id="quoteForm" novalidate>
         <!-- Web3Forms: create a free key at web3forms.com with the owner's email and paste it below -->
         <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
-        <input type="hidden" name="subject" value="New Quote Request - Miami Walk-In Cooler">
-        <input type="hidden" name="from_name" value="Miami Walk-In Cooler Website">
+        <input type="hidden" name="subject" value="New Quote Request - Miami Walk-In Coolers">
+        <input type="hidden" name="from_name" value="Miami Walk-In Coolers Website">
         <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true">
 
         <ol class="progress" aria-label="Quote steps">
@@ -95,19 +95,19 @@
         <fieldset class="step" data-step="1">
           <legend tabindex="-1"><span class="count">Step 1 of 4</span><span class="display">What do you need?</span></legend>
           <div class="type-grid">
-            <label class="type"><input type="radio" name="What do you need?" value="Walk-in cooler" data-key="cooler" data-temp="32–50°F" required>
-              <span class="type-card"><img decoding="async" width="1100" height="825" src="/assets/img/mwc-walkin-cooler.webp" alt="" loading="lazy"><span class="t-body"><strong>Walk-in cooler</strong><span>32–50°F</span></span></span></label>
-            <label class="type"><input type="radio" name="What do you need?" value="Walk-in freezer" data-key="freezer" data-temp="−10–0°F">
-              <span class="type-card"><img decoding="async" width="1100" height="1054" src="/assets/img/mwc-walkin-freezer.webp" alt="" loading="lazy"><span class="t-body"><strong>Walk-in freezer</strong><span>−10–0°F</span></span></span></label>
-            <label class="type"><input type="radio" name="What do you need?" value="Combo box" data-key="combo" data-temp="32–50°F + −10–0°F">
+            <label class="type"><input type="radio" name="What do you need?" value="Walk-in cooler" data-key="cooler" required>
+              <span class="type-card"><img decoding="async" width="1100" height="825" src="/assets/img/mwc-walkin-cooler.webp" alt="" loading="lazy"><span class="t-body"><strong>Walk-in cooler</strong><span>Custom or standard</span></span></span></label>
+            <label class="type"><input type="radio" name="What do you need?" value="Walk-in freezer" data-key="freezer">
+              <span class="type-card"><img decoding="async" width="1100" height="1054" src="/assets/img/mwc-walkin-freezer.webp" alt="" loading="lazy"><span class="t-body"><strong>Walk-in freezer</strong><span>Floor or no floor</span></span></span></label>
+            <label class="type"><input type="radio" name="What do you need?" value="Combo box" data-key="combo">
               <span class="type-card"><img decoding="async" width="1047" height="1100" src="/assets/img/mwc-walkin-combo.webp" alt="" loading="lazy"><span class="t-body"><strong>Combo box</strong><span>Cooler + freezer</span></span></span></label>
-            <label class="type"><input type="radio" name="What do you need?" value="Beer cave / glass doors" data-key="beer-cave" data-temp="32–50°F">
+            <label class="type"><input type="radio" name="What do you need?" value="Beer cave / glass doors" data-key="beer-cave">
               <span class="type-card"><img decoding="async" width="508" height="1100" src="/assets/img/mwc-walkin-glass-door.webp" alt="" loading="lazy"><span class="t-body"><strong>Beer cave</strong><span>Glass doors</span></span></span></label>
-            <label class="type"><input type="radio" name="What do you need?" value="Doors only" data-key="door" data-temp="">
+            <label class="type"><input type="radio" name="What do you need?" value="Doors only" data-key="door">
               <span class="type-card"><img decoding="async" width="570" height="1100" src="/assets/img/mwc-door-viewing-window.webp" alt="" loading="lazy"><span class="t-body"><strong>Doors only</strong><span>Custom &amp; replacement</span></span></span></label>
-            <label class="type"><input type="radio" name="What do you need?" value="Refrigeration" data-key="refrigeration" data-temp="">
-              <span class="type-card"><img decoding="async" width="825" height="1100" src="/assets/img/mwc-refrig-condensing-unit.webp" alt="" loading="lazy"><span class="t-body"><strong>Refrigeration</strong><span>Split &amp; self-contained</span></span></span></label>
-            <label class="type"><input type="radio" name="What do you need?" value="Restaurant equipment" data-key="restaurant" data-temp="">
+            <label class="type"><input type="radio" name="What do you need?" value="Refrigeration" data-key="refrigeration">
+              <span class="type-card"><img decoding="async" width="825" height="1100" src="/assets/img/mwc-refrig-evaporator-coil.webp" alt="" loading="lazy"><span class="t-body"><strong>Refrigeration</strong><span>Split &amp; self-contained</span></span></span></label>
+            <label class="type"><input type="radio" name="What do you need?" value="Restaurant equipment" data-key="restaurant">
               <span class="type-card"><img decoding="async" width="736" height="1100" src="/assets/img/mwc-restaurant-mixer-20qt.webp" alt="" loading="lazy"><span class="t-body"><strong>Restaurant equipment</strong><span>Turbo Air &amp; more</span></span></span></label>
           </div>
           <p class="error-msg" id="err-type" aria-live="polite"></p>
@@ -193,11 +193,11 @@
               <p class="error-msg" id="err-parts" aria-live="polite"></p>
             </fieldset>
             <div class="field">
-              <label for="q-opening">Door opening size, if you need a door <span style="text-transform:none;letter-spacing:0;font-family:var(--body);font-weight:500;color:var(--steel)">(optional)</span></label>
+              <label for="q-opening">Door opening size, if you need a door <span class="opt">(optional)</span></label>
               <input class="input" id="q-opening" name="Door Opening" placeholder="e.g. 34 in × 78 in" autocomplete="off">
             </div>
             <div class="field">
-              <label for="q-part-details">Details <span style="text-transform:none;letter-spacing:0;font-family:var(--body);font-weight:500;color:var(--steel)">(optional)</span></label>
+              <label for="q-part-details">Details <span class="opt">(optional)</span></label>
               <textarea class="input" id="q-part-details" name="Item Details" placeholder="Model numbers, sizes, quantities…"></textarea>
             </div>
           </div>
@@ -206,26 +206,41 @@
         <!-- Step 3 -->
         <fieldset class="step" data-step="3" hidden>
           <legend tabindex="-1"><span class="count">Step 3 of 4</span><span class="display">Where &amp; when</span></legend>
-          <div class="grid-2">
+          <fieldset class="group">
+            <legend class="label">Shipping address</legend>
             <div class="field">
-              <label for="q-zip">Ship-to ZIP code</label>
-              <input class="input" id="q-zip" name="Ship-to ZIP Code" inputmode="numeric" autocomplete="postal-code" maxlength="5" placeholder="33157" aria-describedby="zip-hint err-zip" required>
-              <p class="hint" id="zip-hint">We need this to price shipping.</p>
-              <p class="error-msg" id="err-zip" aria-live="polite"></p>
+              <label for="q-ship-street" class="sr-only">Street address</label>
+              <input class="input" id="q-ship-street" name="Shipping Street" autocomplete="shipping street-address" placeholder="Street address">
             </div>
-            <div class="field">
-              <label for="q-biz">Type of business</label>
-              <select class="input" id="q-biz" name="Business Type">
-                <option value="">Choose one (optional)</option>
-                <option>Restaurant</option>
-                <option>Gas station / convenience store</option>
-                <option>Grocery or market</option>
-                <option>Florist</option>
-                <option>Warehouse / distribution</option>
-                <option>Contractor</option>
-                <option>Other</option>
-              </select>
+            <div class="addr-row">
+              <div class="field">
+                <label for="q-ship-city" class="sr-only">City</label>
+                <input class="input" id="q-ship-city" name="Shipping City" autocomplete="shipping address-level2" placeholder="City">
+              </div>
+              <div class="field">
+                <label for="q-ship-state" class="sr-only">State</label>
+                <input class="input" id="q-ship-state" name="Shipping State" autocomplete="shipping address-level1" placeholder="State">
+              </div>
+              <div class="field">
+                <label for="q-zip" class="sr-only">ZIP code (required)</label>
+                <input class="input" id="q-zip" name="Ship-to ZIP Code" inputmode="numeric" autocomplete="shipping postal-code" maxlength="5" placeholder="ZIP *" aria-describedby="zip-hint err-zip" required>
+              </div>
             </div>
+            <p class="hint" id="zip-hint">ZIP is required. We need it to price shipping.</p>
+            <p class="error-msg" id="err-zip" aria-live="polite"></p>
+          </fieldset>
+          <div class="field">
+            <label for="q-biz">Type of business <span class="opt">(optional)</span></label>
+            <select class="input" id="q-biz" name="Business Type">
+              <option value="">Choose one</option>
+              <option>Restaurant</option>
+              <option>Gas station / convenience store</option>
+              <option>Grocery or market</option>
+              <option>Florist</option>
+              <option>Warehouse / distribution</option>
+              <option>Contractor</option>
+              <option>Other</option>
+            </select>
           </div>
           <fieldset class="group">
             <legend class="label">When do you need it?</legend>
@@ -242,13 +257,14 @@
           <legend tabindex="-1"><span class="count">Step 4 of 4</span><span class="display">Where do we send the price?</span></legend>
           <div class="grid-2">
             <div class="field">
-              <label for="q-name">Full name</label>
-              <input class="input" id="q-name" name="Full Name" autocomplete="name" required aria-describedby="err-name">
-              <p class="error-msg" id="err-name" aria-live="polite"></p>
+              <label for="q-first">First name</label>
+              <input class="input" id="q-first" name="First Name" autocomplete="given-name" required aria-describedby="err-first">
+              <p class="error-msg" id="err-first" aria-live="polite"></p>
             </div>
             <div class="field">
-              <label for="q-company">Company name <span style="text-transform:none;letter-spacing:0;font-family:var(--body);font-weight:500;color:var(--steel)">(optional)</span></label>
-              <input class="input" id="q-company" name="Company Name" autocomplete="organization">
+              <label for="q-last">Last name</label>
+              <input class="input" id="q-last" name="Last Name" autocomplete="family-name" required aria-describedby="err-last">
+              <p class="error-msg" id="err-last" aria-live="polite"></p>
             </div>
             <div class="field">
               <label for="q-phone">Phone</label>
@@ -262,7 +278,20 @@
             </div>
           </div>
           <div class="field">
-            <label for="q-msg">Tell us more <span style="text-transform:none;letter-spacing:0;font-family:var(--body);font-weight:500;color:var(--steel)">(optional)</span></label>
+            <label for="q-company">Company name <span class="opt">(optional)</span></label>
+            <input class="input" id="q-company" name="Company Name" autocomplete="organization">
+          </div>
+          <div class="field">
+            <label for="q-company-addr">Company address <span class="opt">(optional)</span></label>
+            <input class="input" id="q-company-addr" name="Company Address" autocomplete="off" placeholder="Street, city, state, ZIP">
+          </div>
+          <div class="field">
+            <label for="q-billing">Billing address <span class="opt">(optional)</span></label>
+            <input class="input" id="q-billing" name="Billing Address" autocomplete="billing street-address" placeholder="Street, city, state, ZIP">
+            <label class="check"><input type="checkbox" id="q-billing-same" name="Billing Same As" value="Same as shipping address"><span>Same as the shipping address</span></label>
+          </div>
+          <div class="field">
+            <label for="q-msg">Tell us more <span class="opt">(optional)</span></label>
             <textarea class="input" id="q-msg" name="Tell us more" placeholder="Door size or location, glass doors, windows, timeline — anything that helps."></textarea>
           </div>
         </fieldset>
@@ -289,17 +318,15 @@
 
     <aside class="spec" aria-labelledby="spec-title">
       <div class="spec-head"><h2 id="spec-title">Your walk-in</h2><span>Draft spec</span></div>
-      <div class="plan" id="plan"></div>
       <dl id="spec-list">
         <dt>Type</dt><dd data-spec="type" class="empty">—</dd>
-        <dt>Temp</dt><dd data-spec="temp" class="empty">—</dd>
         <dt>Interior</dt><dd data-spec="size" class="empty">—</dd>
         <dt>Floor area</dt><dd data-spec="area" class="empty">—</dd>
         <dt>Setup</dt><dd data-spec="setup" class="empty">—</dd>
         <dt>Ship to</dt><dd data-spec="zip" class="empty">—</dd>
         <dt>Timeline</dt><dd data-spec="timeline" class="empty">—</dd>
       </dl>
-      <p class="spec-foot">This sheet fills in as you answer and is sent with your request. The shop confirms every measurement before building.</p>
+      <p class="spec-foot">This summary fills in as you answer and is sent with your request. The shop confirms every measurement before building.</p>
     </aside>
   </div>
 </main>
@@ -334,7 +361,7 @@
         <h2>Talk to the shop</h2>
         <ul>
           <li><a href="tel:+17865921077">(786) 592-1077</a></li>
-          <li><a href="mailto:miamiwalkincoolers@gmail.com">miamiwalkincoolers@gmail.com</a></li>
+          <li><a href="mailto:info@miamiwalkincoolers.com">info@miamiwalkincoolers.com</a></li>
           <li>Mon–Fri · 8am–6pm ET</li>
           <li><a href="https://www.instagram.com/miamiwalkincoolers/" rel="noopener">Instagram @miamiwalkincoolers</a></li>
         </ul>
@@ -342,10 +369,10 @@
       <div>
         <h2>Direct lines</h2>
         <ul class="footer-lines">
-          <li><span>Shaker Chehab</span><a href="tel:+13055821667">305-582-1667</a></li>
-          <li><span>Ahmed Chehab</span><a href="tel:+13052058184">305-205-8184</a></li>
           <li><span>Ian Chehab</span><a href="tel:+17867787681">786-778-7681</a></li>
-          <li><span>Nathan Chehab</span><a href="tel:+17864065929">786-406-5929</a></li>
+          <li><span>Nate Chehab</span><a href="tel:+17864065929">786-406-5929</a></li>
+          <li><span>Shaker Chehab</span><a href="tel:+13055821667">305-582-1667</a></li>
+          <li><span>Ahmad Chehab</span><a href="tel:+13052058184">305-205-8184</a></li>
         </ul>
       </div>
     </div>

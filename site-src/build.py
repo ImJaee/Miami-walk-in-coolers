@@ -13,7 +13,8 @@ the generated HTML:
 
     python3 site-src/build.py
 
-Snippets: {{QUOTE_FORM}} inserts site-src/partials/quote-form.html.
+Snippets: {{QUOTE_FORM}} inserts site-src/partials/quote-form.html; {{BRANDS}} inserts
+the "Brands we carry" logo row.
 Images: <img src="/assets/img/NAME.webp"> gets width/height filled in from the
 file, plus loading="lazy" unless the tag already sets fetchpriority or loading.
 """
@@ -29,7 +30,7 @@ OG_IMAGE = DOMAIN + "/images/miami-walk-in-coolers.webp"
 
 PHONE_DISPLAY = "(786) 592-1077"
 PHONE_TEL = "+17865921077"
-EMAIL = "miamiwalkincoolers@gmail.com"
+EMAIL = "info@miamiwalkincoolers.com"
 INSTAGRAM = "https://www.instagram.com/miamiwalkincoolers/"
 
 NAV = [
@@ -191,10 +192,10 @@ def footer():
       <div>
         <h2>Direct lines</h2>
         <ul class="footer-lines">
-          <li><span>Shaker Chehab</span><a href="tel:+13055821667">305-582-1667</a></li>
-          <li><span>Ahmed Chehab</span><a href="tel:+13052058184">305-205-8184</a></li>
           <li><span>Ian Chehab</span><a href="tel:+17867787681">786-778-7681</a></li>
-          <li><span>Nathan Chehab</span><a href="tel:+17864065929">786-406-5929</a></li>
+          <li><span>Nate Chehab</span><a href="tel:+17864065929">786-406-5929</a></li>
+          <li><span>Shaker Chehab</span><a href="tel:+13055821667">305-582-1667</a></li>
+          <li><span>Ahmad Chehab</span><a href="tel:+13052058184">305-205-8184</a></li>
         </ul>
       </div>
     </div>
@@ -210,6 +211,18 @@ ACTION_BAR = f"""<div class="action-bar">
   <a class="btn btn-line" href="tel:{PHONE_TEL}">Call</a>
   <a class="btn btn-cta" href="/get-a-quote">Get a quote <span class="arrow" aria-hidden="true">→</span></a>
 </div>"""
+
+
+BRANDS = """<section class="brands-strip" aria-labelledby="brands-title">
+    <div class="container">
+      <p class="eyebrow" id="brands-title">Brands we carry</p>
+      <ul class="brand-logos">
+        <li><img src="/assets/img/brand-turbo-air.webp" alt="Turbo Air"></li>
+        <li><img src="/assets/img/brand-tecumseh.webp" alt="Tecumseh"></li>
+        <li><img src="/assets/img/brand-heatcraft.webp" alt="Heatcraft"></li>
+      </ul>
+    </div>
+  </section>"""
 
 
 def cta_band(title, text, button="Get a fast quote"):
@@ -243,6 +256,7 @@ def build_page(src):
     meta = json.loads(m.group(1))
     body = text[m.end():]
     body = body.replace("{{QUOTE_FORM}}", (ROOT / "partials" / "quote-form.html").read_text())
+    body = body.replace("{{BRANDS}}", BRANDS)
     body = re.sub(
         r"\{\{CTA\s+(\{.*?\})\}\}",
         lambda c: cta_band(**json.loads(c.group(1))),
